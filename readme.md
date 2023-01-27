@@ -10,6 +10,4 @@
 - 🛠️ [Hardware testing files](https://github.com/Modular-Lamps/hardware-tests)
 - 🧬 [Electronics](https://github.com/Modular-Lamps/electronics)
 
-## ⚙️ Updates
-- ⚠️ Critical or bug-fixing updates are provided every week
-- 🌋 New features are added at least once every 3 months
+## ⚙️ Under active development
