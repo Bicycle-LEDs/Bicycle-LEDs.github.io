@@ -280,7 +280,6 @@ nav .fa-regular {
   min-height: 80px;
   font-size: 15px;
   text-align: right;
-  margin-left: 2%;
 }
 .docs .sub-col {
   color: #fff;
@@ -290,10 +289,23 @@ nav .fa-regular {
   min-height: 80px;
   font-size: 15px;
   text-align: right;
+  margin-right: 2%;
+}
+
+.docs .sub-col-2 {
+  color: #fff;
+  float:left;
+  margin-top: 30px;
+  width: 40%;
+  min-height: 80px;
+  font-size: 15px;
+  text-align: left;
+  margin-left: 2%;
 }
 
 .docs .col img {
   width: 100%;
+  border-radius: 40px;
 }
 
 .docs .row::after {
@@ -314,7 +326,14 @@ nav .fa-regular {
     width: 100%;
     text-align: center;
   }
+  .docs .col img {
+    border-radius: 25px;
+  }
   .docs .sub-col {
+    width: 100%;
+    text-align: center;
+  }
+  .docs .sub-col-2 {
     width: 100%;
     text-align: center;
   }
