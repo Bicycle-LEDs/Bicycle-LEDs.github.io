@@ -10,7 +10,7 @@
   text-align: center;
   font-size: 25px;
   color: yellow;
-  background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0), #f443369f, rgba(255, 255, 255, 0));
+  background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.05), #f443369f, rgba(255, 255, 255, 0.05));
 }
 
 @media(max-width: 700px) {
@@ -105,6 +105,10 @@ nav .fa-regular {
   margin: 10px auto 30px;
   font-size: 18px;
 }
+.text-box img {
+  margin-top: 10vh;
+  height: 25vh;
+}
 
 .organ-btn {
   display: inline-block;
@@ -127,10 +131,14 @@ nav .fa-regular {
 
 @media(max-width: 700px) {
   .text-box h1 {
-    font-size: 40px;
+    font-size: 45px;
   }
   .text-box p {
-    font-size: 15px;
+    font-size: 20px;
+  }
+  .text-box img {
+    height: 20vh;
+    margin-top: 25vh;
   }
   .organ-btn {
     padding: 10px 20px;
