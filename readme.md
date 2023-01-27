@@ -1,6 +1,6 @@
 # 🪄 Main project site
 
-## 🚀 Hosted [here](https://bicycle-leds.github.io/)
+## 🚀 Hosted [here](https://bicycle-leds.github.io/){:target="_blank"}
 
 ## 🔥 This repository contains:
 - 🪢 Source code for website
