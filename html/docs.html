@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style/style.css"> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet" type='text/css'>
+
+  <title>Modular Lamps - docs</title>
+
+</head>
+
+<body>
+
+  <section class="docs-header">
+
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <i class="fa-regular fa-square-minus" onclick="hideMenu()"></i>
+
+        <ul>
+          <li><a href="../index.html" class="link">HOME</a></li>
+          <li><a href="./about.html" class="link">ABOUT</a></li>
+          <li><a class="here">DOCUMENTATION</a></li>
+        </ul>
+      </div>
+      <i class="fa-regular fa-square-plus" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="announcment">
+      <p id="announcment"></p>
+    </div>
+
+    <h3>Documentation</h3>
+
+  </section>
+
+  <!--  Docs content  -->
+
+  <section class="docs">
+
+    <div class="row">
+      <div class="sub-col">
+        <h2>Electric diagram</h2>
+        <p>Contains all the connections between components</p>
+      </div>
+      <div class="col">
+        <a href="https://github.com/Modular-Lamps/electronics/blob/main/schema.png" target="_blank"><img src="https://github.com/Modular-Lamps/electronics/blob/main/schema.png?raw=true"></a>
+      </div>
+    </div>
+
+
+  </section>
+  
+  <iframe src="./footer.html" seamless scrolling="no"></iframe>
+
+  <script src="../scripts/navigationBar.js"></script>
+  <script src="../scripts/announcment.js"></script>
+
+</body>
+</html>
