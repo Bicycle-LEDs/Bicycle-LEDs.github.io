@@ -7,7 +7,7 @@ var globalAnnouncment =
 //HERE WRITE ADDITIONAL ANNOUNCMENTS FOR SPECIFIED FILES
 var mainAnnouncment = '',
     aboutAnnouncment = '',
-    docsAnnouncment = '<i class="fa-solid fa-hammer"></i> Docs are being builded <i class="fa-solid fa-wrench"></i>'
+    docsAnnouncment = '<i class="fa-solid fa-hammer"></i> Docs - work in progress <i class="fa-solid fa-wrench"></i>'
 
 
 var fileName = location.href.split("/").slice(-1), text;
