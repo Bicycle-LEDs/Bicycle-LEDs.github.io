@@ -31,3 +31,7 @@ function showMenu() {
 function hideMenu() {
   navLinks.style.right = "-140px"
 }
+
+function reload() {
+  location.reload(true);
+}
