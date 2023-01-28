@@ -2,8 +2,24 @@ var menu = document.getElementById("menu")
 
 var loading = document.getElementById("loading");
 var main = document.getElementById("mainSection");
+var e 
 
-async function hmm() {
+function error() {
+  setTimeout(() => {
+    loading.style.animationName = "loadingError"
+    loading.style.animationDelay = "0s"
+    loading.style.animationDuration = "3s"
+    loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error'
+    var announcment = document.getElementById("announcment")
+    announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Errors occured'
+    setTimeout(() => {
+      loading.style.display = "none"
+      main.style.display = "block"
+    }, 2500);
+  }, 2500)
+}
+
+async function asyncMenu() {
   try {
     modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
     
@@ -19,27 +35,19 @@ async function hmm() {
 
       menu.innerHTML = menu.innerHTML + "</ul>"
     }
-    
-    setTimeout(() => {
-      loading.style.display = "none"
-      main.style.display = "block"
-    }, 2000);
   } 
 
   catch(err) {
-    setTimeout(() => {
-      loading.style.animationName = "loadingError"
-      loading.style.animationDelay = "0s"
-      loading.style.animationDuration = "3s"
-      loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error'
-      var announcment = document.getElementById("announcment")
-      announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Errors occured'
-      setTimeout(() => {
-        loading.style.display = "none"
-        main.style.display = "block"
-      }, 2500);
-    }, 2500)
+    error(); e=1
   }
 }
 
-hmm()
+asyncMenu()
+
+window.onload = function() {
+  if(e) return;
+  setTimeout(() => {
+    loading.style.display = "none"
+    main.style.display = "block"
+  }, 2000);
+}
