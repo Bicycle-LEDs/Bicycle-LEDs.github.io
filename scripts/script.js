@@ -1,13 +1,15 @@
+// <-- Announcment -->
+
 var globalAnnouncment = 
 
 //HERE WRITE ANNOUNCMENT
-'<i class="fa-solid fa-microchip"></i> Not fully ready'
+''
 
 
 //HERE WRITE ADDITIONAL ANNOUNCMENTS FOR SPECIFIED FILES
 var mainAnnouncment = '',
     aboutAnnouncment = '',
-    docsAnnouncment = '<i class="fa-solid fa-hammer"></i> Docs - work in progress <i class="fa-solid fa-wrench"></i>'
+    docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Docs - work in progress <i class="fa-solid fa-wrench"></i>'
 
 
 var fileName = location.href.split("/").slice(-1), text;
@@ -18,3 +20,14 @@ else if (fileName[0] == 'index.html') text = mainAnnouncment
 text ? (globalAnnouncment ? text = text + '<br />' + globalAnnouncment : text = text) : (globalAnnouncment ? text = globalAnnouncment : text = '')
 
 announcment.innerHTML = text
+
+
+// <-- Navigator -->
+
+var navLinks = document.getElementById("navLinks")
+function showMenu() {
+  navLinks.style.right = "0"
+}
+function hideMenu() {
+  navLinks.style.right = "-140px"
+}

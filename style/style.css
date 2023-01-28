@@ -89,6 +89,50 @@ nav .fa-regular {
   cursor: not-allowed;
 }
 
+@keyframes loading {
+  0%   {color:yellow; line-height: calc(100vh - 400px - 150px)}
+  25%  {color:red; line-height: calc(100vh - 400px - 50px)}
+  50%  {color:yellow; line-height: calc(100vh - 400px - 150px)}
+  75%  {color:red; line-height: calc(100vh - 400px - 250px)}
+  100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
+}
+@keyframes loadingError {
+  0%   {color:rgb(150, 26, 26);}
+  25%  {color:rgb(255, 16, 16);}
+  50%  {color:rgb(150, 26, 26);}
+  75%  {color:rgb(255, 16, 16);}
+  100% {color:rgb(150, 26, 26);}
+}
+@keyframes spinner {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+#loading {
+  color: yellow;
+  position: static;
+  width: 100%;
+  height: calc(100vh - 400px - 150px);
+  line-height: calc(100vh - 400px - 150px);
+  background-color: black;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  animation-delay: 0.5s;
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+#loading #a {
+  animation-delay: 0.5s;
+  animation-name: spinner;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
 .text-box {
   color: #fff;
   top: 50%;
@@ -188,6 +232,18 @@ nav .fa-regular {
     color: #f44336;
     transition: 0.3s;
   }
+  @keyframes loading {
+    0%   {color:yellow; line-height: calc(100vh - 250px - 150px)}
+    25%  {color:red; line-height: calc(100vh - 250px - 100px)}
+    50%  {color:yellow; line-height: calc(100vh - 250px - 150px)}
+    75%  {color:red; line-height: calc(100vh - 250px - 200px)}
+    100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
+  }
+  #loading {
+    height: calc(100vh - 250px - 150px);
+    line-height: calc(100vh - 250px - 150px);
+    font-size: 40px;
+  }
 }
 
 /* --- About page --- */
@@ -200,6 +256,7 @@ nav .fa-regular {
   background-size: cover;
   text-align: center;
   color: #fff;
+  display: block;
 }
 .sub-header h3 {
   margin-top: 80px;
@@ -212,6 +269,7 @@ nav .fa-regular {
   margin: auto;
   padding: 25px;
   background: rgb(26, 25, 25);
+  display: none;
 }
 .about h2 {
   font-size: 35px;
@@ -272,6 +330,7 @@ nav .fa-regular {
   background: rgb(26, 25, 25);
   margin: auto;
   padding: 25px;
+  display: none;
 }
 
 .docs .menu {
