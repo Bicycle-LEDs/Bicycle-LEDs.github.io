@@ -90,13 +90,11 @@ nav .fa-regular {
 }
 
 .text-box {
-  width: 90%;
   color: #fff;
-  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
   text-align: center;
+  justify-content: center;
 }
 .text-box h1 {
   font-size: 62px;
@@ -106,8 +104,8 @@ nav .fa-regular {
   font-size: 18px;
 }
 .text-box img {
-  margin-top: 10vh;
-  height: 25vh;
+  margin-top: 20vh;
+  height: 20vh;
 }
 
 .organ-btn {
@@ -118,7 +116,6 @@ nav .fa-regular {
   padding: 12px 34px;
   font-size: 15px;
   background: transparent;
-  position: relative;
   cursor: pointer;
   transition: 0.5s;
   margin-right: 10px;
@@ -134,11 +131,12 @@ nav .fa-regular {
     font-size: 45px;
   }
   .text-box p {
-    font-size: 20px;
+    font-size: 15px;
+    margin: 2px auto 30px;
   }
   .text-box img {
     height: 20vh;
-    margin-top: 25vh;
+    margin-top: 15vh;
   }
   .organ-btn {
     padding: 10px 20px;
