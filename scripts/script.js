@@ -12,7 +12,6 @@ function hideMenu() {
 
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
-var loadingAnim = true
 
 if(loading.classList.contains("mainPageLoading")) {
     loading.style.lineHeight = "80vh"
@@ -34,7 +33,7 @@ window.onload = function() {
   setTimeout(() => {
     loading.style.display = "none"
     main.style.display = "block"
-  }, loadingAnim ? 1000 : 1);
+  }, 1000);
 }
 
 

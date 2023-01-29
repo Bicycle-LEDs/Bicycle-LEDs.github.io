@@ -1,5 +1,6 @@
 var menu = document.getElementById("menu")
-var description = document.getElementById("desc")
+var description = document.getElementById("description")
+var image = document.getElementById("image")
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 
@@ -44,7 +45,7 @@ async function showDocs() {
   description.innerHTML = ""
 
   if(selectedMenu == -1) {
-    description.innerHTML = '<h1>Choose a valid component or module from menu <i class="fa-solid fa-sitemap"></i></h1>'
+    description.innerHTML = '<h1><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
     return
   }
 
@@ -56,22 +57,41 @@ async function showDocs() {
     if(selectedSubMenu != -1) {
 
       // Component info
-      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
 
+      // Name
+      description.innerHTML = '<h1><i class="i fa-solid fa-atom"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
+
+      // Subtitle
+      description.innerHTML = description.innerHTML + '<h2><i class="fa-solid fa-boxes-stacked"></i> Inside ' + modules[selectedMenu].name + '</h2>'
+
+      // Description
+      if(moduleJson.components[selectedSubMenu].description) description.innerHTML = description.innerHTML + '<h3><i class="i fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].description + '</h3>'
+      else description.innerHTML = description.innerHTML + `<h3 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No description</h3>`
+
+      // Image
       let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
-      if(checkImage.ok) description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
-      else description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
+      if(checkImage.ok) image.innerHTML = '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
+      else image.innerHTML = `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
 
     }
 
     else {
 
       // Module info
-      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.name + '</h1>'
 
+      // Name
+      description.innerHTML = '<h1><i class="i fa-solid fa-box-archive"></i> ' + moduleJson.name + '</h1>'
+
+      // Subtitle
+      if(moduleJson.subtitle) description.innerHTML = description.innerHTML + '<h2><i class="fa-solid fa-circle-info"></i> ' + moduleJson.subtitle + '</h2>'
+      else description.innerHTML = description.innerHTML + `<h2 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No subtitle</h2>`
+
+      // Description
+
+      // Image
       let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture, { method: 'HEAD' })
-      if(checkImage.ok) description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture + '">'
-      else description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
+      if(checkImage.ok) image.innerHTML = '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture + '">'
+      else image.innerHTML = `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
     }
   }
 

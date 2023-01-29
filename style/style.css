@@ -351,7 +351,8 @@ nav .fa-regular {
 }
 .docs .col {
   float:left;
-  width: calc(100% - 15vw - 25px);
+  width: calc((100% - 15vw - 25px) / 2);
+  padding: 10px;
 }
 
 .docs #menu {
@@ -400,21 +401,47 @@ nav .fa-regular {
   color: yellow;
 }
 
-.docs #desc h1 {
-  margin-top: 10px;
-  font-size: 30px;
+.docs #description h1 {
+  font-size: 40px;
   color: rgb(255, 255, 255);
-  text-align: left;
+  text-align: right;
 }
-.docs #desc h1 i {
+.docs #description h2 {
+  margin-top: -5px;
+  font-size: 30px;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  text-align: right;
+}
+.docs #description h3 {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  text-align: right;
+}
+.docs #description .i {
   color: rgb(28, 151, 12);
 }
-.docs #desc .info i {
+.docs #description .info i {
   color: rgb(255, 0, 0);
 }
-.docs #desc img {
-  width: 50%;
-  border-radius: 5px;
+
+.docs #image {
+  text-align: center;
+}
+.docs #image h1 {
+  margin-top: 30%;
+  font-size: 22px;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+}
+.docs #image img {
+  max-height: 150vh;
+  width: 100%;
+}
+.docs #image .info i {
+  color: rgb(255, 0, 0);
 }
 
 
@@ -455,12 +482,27 @@ nav .fa-regular {
     border-bottom: 4px solid;
   }
 
-  .docs #desc h1 {
+  .docs #description h1 {
     margin-top: 30px;
     font-size: 30px;
+    line-height: 31px;
     text-align: center;
   }
-  .docs #desc img {
-    width: 100%;
+  .docs #description h2 {
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .docs #description h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .docs #image h1 {
+    margin-top: 10px;
+  }
+  .docs #image img {
+    max-height: 200vh;
   }
 }
