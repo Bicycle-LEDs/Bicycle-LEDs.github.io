@@ -9,7 +9,7 @@ var fileName = location.href.split("/").slice(-1), text;
 setInterval(() => {
   var announcment = document.getElementById("announcment")
   var today = new Date();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();// <-- Announcment -->
+  var time = today.getHours() + ":" + (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes()) + ":" + (today.getSeconds() < 9 ? "0" + today.getSeconds() : today.getSeconds());// <-- Announcment -->
   timeAnnouncment = globalAnnouncment ? globalAnnouncment + " | " + time : time
   if(fileName[0] == 'docs.html') text = docsAnnouncment
   else if (fileName[0] == 'about.html') text = aboutAnnouncment
