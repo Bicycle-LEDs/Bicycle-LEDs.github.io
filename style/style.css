@@ -245,6 +245,13 @@ nav .fa-regular {
     75%  {color:red; line-height: calc(100vh - 250px - 200px)}
     100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
   }
+  @keyframes mainPageLoading {
+    0%   {color:yellow; line-height: calc(100vh - 150px)}
+    25%  {color:red; line-height: calc(100vh - 100px)}
+    50%  {color:yellow; line-height: calc(100vh - 150px)}
+    75%  {color:red; line-height: calc(100vh - 200px)}
+    100% {color:yellow; line-height: calc(100vh - 150px)}
+  }
   #loading {
     height: calc(100vh - 250px - 150px);
     line-height: calc(100vh - 250px - 150px);
