@@ -50,12 +50,11 @@ async function showDocs() {
   try {
 
     modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
 
     if(selectedSubMenu != -1) {
-      let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
 
-
-      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> Choosen a component: ' + moduleJson.components[selectedSubMenu].menuname + '</h1>'
+      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
 
       let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
       if(checkImage.ok) {
@@ -67,14 +66,18 @@ async function showDocs() {
 
     }
     else {
+      if(!moduleJson.name) {
+        description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + modules[selectedMenu].name + " (can't load full name)" + '</h1>'
+        return err
+      }
 
-      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> Choosen a module: ' + modules[selectedMenu].name + '</h1>'
+      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.name + '</h1>'
 
     }
   }
 
   catch(err) {
-    description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
+    description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load some data</h1>`
 
     if(selectedMenu == -1) loading.classList.add("e")
   }
