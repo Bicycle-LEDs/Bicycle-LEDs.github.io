@@ -1,3 +1,13 @@
+// <-- Navigator -->
+
+var navLinks = document.getElementById("navLinks")
+function showMenu() {
+  navLinks.style.right = "0"
+}
+function hideMenu() {
+  navLinks.style.right = "-140px"
+}
+
 // <-- Loading animation -->
 
 var loading = document.getElementById("loading")
@@ -68,16 +78,6 @@ else if (fileName[0] == 'index.html') text = mainAnnouncment
 text ? (globalAnnouncment ? text = text + '<br />' + globalAnnouncment : text = text) : (globalAnnouncment ? text = globalAnnouncment : text = '')
 announcment.innerHTML =  text
 
-
-// <-- Navigator -->
-
-var navLinks = document.getElementById("navLinks")
-function showMenu() {
-  navLinks.style.right = "0"
-}
-function hideMenu() {
-  navLinks.style.right = "-140px"
-}
 
 // <-- Reloader -->
 
