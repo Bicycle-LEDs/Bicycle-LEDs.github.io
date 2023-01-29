@@ -57,5 +57,5 @@ announcment.innerHTML =  text
 // <-- Reloader -->
 
 function reload() {
-  location.reload(true);
+  window.location = window.location.href + "?eraseCache=true"
 }
