@@ -1,12 +1,13 @@
 var menu = document.getElementById("menu")
+var description = document.getElementById("desc")
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 
-var selectedMenu = 0
+var selectedMenu = -1
 var selectedSubMenu = -1
 var subClicked = false
 
-async function buildMenu(firstRun = true) {
+async function buildMenu(firstRun = false) {
 
   if(!firstRun) {
     loading.style.display = "block"
@@ -15,7 +16,7 @@ async function buildMenu(firstRun = true) {
 
   try {
     menu.innerHTML = ""
-    modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
 
     for (let k = 0; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
@@ -35,28 +36,73 @@ async function buildMenu(firstRun = true) {
   catch(err) {
     if(firstRun) loading.classList.add("e")
   }
-
-  if(!firstRun) {
-    setTimeout(() => {
-      loading.style.display = "none"
-      main.style.display = "block"
-    }, 700);
-  }
 }
 
-buildMenu()
+async function showDocs() {
+
+  description.innerHTML = ""
+
+  if(selectedMenu == -1) {
+    description.innerHTML = '<h1>Choose a valid component or module from menu <i class="fa-solid fa-sitemap"></i></h1>'
+    return
+  }
+
+  try {
+
+    modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+
+    if(selectedSubMenu != -1) {
+      let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
+
+
+      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> Choosen a component: ' + moduleJson.components[selectedSubMenu].menuname + '</h1>'
+
+      let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
+      if(checkImage.ok) {
+        description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
+      }
+      else {
+        return err
+      }
+
+    }
+    else {
+
+      description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> Choosen a module: ' + modules[selectedMenu].name + '</h1>'
+
+    }
+  }
+
+  catch(err) {
+    description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
+
+    if(selectedMenu == -1) loading.classList.add("e")
+  }
+
+  
+  setTimeout(() => {
+    loading.style.display = "none"
+    main.style.display = "block"
+  }, 400);
+}
+
+
+buildMenu(true)
+showDocs()
 
 async function mainDoc(moduleNum) {
   if(subClicked) return
   selectedMenu = moduleNum
   selectedSubMenu = -1
-  buildMenu(false)
+  await buildMenu()
+  await showDocs()
 }
 
 async function subDoc(moduleNum, componentNum) {
   subClicked = true
   selectedMenu = moduleNum
   selectedSubMenu = componentNum
-  await buildMenu(false)
+  await buildMenu()
+  await showDocs()
   subClicked = false
 }

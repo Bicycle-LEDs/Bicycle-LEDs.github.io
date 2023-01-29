@@ -19,7 +19,7 @@ setTimeout(() => {
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
-  if(window.innerHeight < 735) {
+  if(window.innerHeight < 735 && window.innerWidth > 700) {
     loading.style.animation = "loadingWithoutFly 2s infinite"
   }
   else loading.style.animation = "loading 2s infinite"
@@ -28,7 +28,7 @@ setTimeout(() => {
     loading.style.height = "100vh"
     loading.style.animationName = "mainPageLoading"
   }
-}, 200);
+}, 300);
 
 // Error animation
 function error() {
@@ -37,13 +37,13 @@ function error() {
     loading.style.animation = "loadingError 2s infinite"
     loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error'
     var announcment = document.getElementById("announcment")
-    announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Loading errors occured'
+    announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Errors occured'
     var title = document.getElementById("title")
     title.style.animation = "loadingError 2s infinite"
     setTimeout(() => {
       loading.style.display = "none"
       main.style.display = "block"
-      if(window.innerHeight < 735) loading.style.animation = "loadingWithoutFly 2s infinite" 
+      if(window.innerHeight < 735 && window.innerWidth > 700) loading.style.animation = "loadingWithoutFly 2s infinite" 
       else loading.style.animation = "loading 2s infinite"
       loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading" style="animation: spinner 0.5s infinite;"></i> Loading'
     }, loadingAnim ? 2500 : 1);
