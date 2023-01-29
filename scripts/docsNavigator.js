@@ -8,7 +8,7 @@ function error() {
   setTimeout(() => {
     loading.style.animationName = "loadingError"
     loading.style.animationDelay = "0s"
-    loading.style.animationDuration = "3s"
+    loading.style.animationDuration = "2s"
     loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error'
     var announcment = document.getElementById("announcment")
     announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Errors occured'

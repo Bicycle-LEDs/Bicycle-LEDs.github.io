@@ -126,6 +126,7 @@ nav .fa-regular {
   font-weight: bold;
   text-align: center;
   animation-name: loading;
+  animation-delay: 0.3s;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   cursor: not-allowed;
@@ -134,6 +135,7 @@ nav .fa-regular {
 
 #loading #a {
   animation-name: spinner;
+  animation-delay: 0.3s;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
