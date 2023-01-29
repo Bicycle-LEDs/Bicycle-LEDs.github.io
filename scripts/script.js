@@ -29,32 +29,9 @@ setTimeout(() => {
   else loading.style.animation = "loading 2s infinite"
 }, 300);
 
-// Error animation
-function error() {
-  setTimeout(() => {
-    loading.style.animationDelay = "0s"
-    loading.style.animation = "loadingError 2s infinite"
-    loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error'
-    var announcment = document.getElementById("announcment")
-    announcment.innerHTML = announcment.innerHTML + '<br />' + '<i class="fa-solid fa-bug"></i> Errors occured'
-    var title = document.getElementById("title")
-    title.style.animation = "loadingError 2s infinite"
-    setTimeout(() => {
-      loading.style.display = "none"
-      main.style.display = "block"
-      if(window.innerHeight < 735 && window.innerWidth > 700) loading.style.animation = "loadingWithoutFly 2s infinite" 
-      else loading.style.animation = "loading 2s infinite"
-      loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading" style="animation: spinner 0.5s infinite;"></i> Loading'
-    }, loadingAnim ? 2500 : 1);
-  }, loadingAnim ? 2000 : 1)
-}
-
 // Remove loading screen
 window.onload = function() {
   setTimeout(() => {
-    if(loading.classList.contains("e")) {
-      return error()
-    }
     loading.style.display = "none"
     main.style.display = "block"
   }, loadingAnim ? 1000 : 1);

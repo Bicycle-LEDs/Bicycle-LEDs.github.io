@@ -31,15 +31,13 @@
   75%  {color:red; line-height: calc(80vh - 100px)}
   100% {color:yellow; line-height: 80vh}
 }
-
 @keyframes loadingError {
-  0%   {color:rgb(150, 26, 26);}
-  25%  {color:rgb(255, 16, 16);}
-  50%  {color:rgb(150, 26, 26);}
-  75%  {color:rgb(255, 16, 16);}
-  100% {color:rgb(150, 26, 26);}
+  0%   {color:rgb(80, 17, 17);}
+  25%  {color:rgb(255, 0, 0);}
+  50%  {color:rgb(80, 17, 17);}
+  75%  {color:rgb(255, 0, 0);}
+  100% {color:rgb(80, 17, 17);}
 }
-
 
 #loading {
   color: yellow;
@@ -368,6 +366,10 @@ nav .fa-regular {
   cursor: pointer;
   color: red;
   padding-bottom: 30px;
+  transition: 0.2s;
+}
+.docs #menu ul:hover {
+  color: rgb(218, 215, 17);
 }
 .docs #menu ul li {
   font-size: 20px;
@@ -382,6 +384,7 @@ nav .fa-regular {
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, rgb(26, 25, 25), rgba(83, 18, 14, 0.8));
   padding-left: 5px;
+  transition: 0.2s;
 }
 .docs #menu ul li:first-child {
   border-top: 4px solid;
@@ -389,6 +392,10 @@ nav .fa-regular {
 .docs #menu ul li:last-child {
   border-bottom: 4px solid;
 }
+.docs #menu ul li:hover {
+  color: rgb(28, 151, 12);
+}
+
 .docs #menu .selected {
   color: yellow;
 }
@@ -405,7 +412,6 @@ nav .fa-regular {
 .docs #desc .info i {
   color: rgb(255, 0, 0);
 }
-
 .docs #desc img {
   width: 50%;
   border-radius: 5px;

@@ -34,7 +34,8 @@ async function buildMenu(firstRun = false) {
   }
 
   catch(err) {
-    if(firstRun) loading.classList.add("e")
+    var title = document.getElementById("title")
+    if(firstRun) title.style.animation = "loadingError 2s infinite"
   }
 }
 
@@ -49,37 +50,34 @@ async function showDocs() {
 
   try {
 
-    modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
     let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
 
     if(selectedSubMenu != -1) {
 
+      // Component info
       description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
 
       let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
-      if(checkImage.ok) {
-        description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
-      }
-      else {
-        return err
-      }
+      if(checkImage.ok) description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
+      else description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
 
     }
-    else {
-      if(!moduleJson.name) {
-        description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + modules[selectedMenu].name + " (can't load full name)" + '</h1>'
-        return err
-      }
 
+    else {
+
+      // Module info
       description.innerHTML = '<h1><i class="fa-solid fa-circle-info"></i> ' + moduleJson.name + '</h1>'
 
+      let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture, { method: 'HEAD' })
+      if(checkImage.ok) description.innerHTML = description.innerHTML + '<br /><img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture + '">'
+      else description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load image</h1>`
     }
   }
 
   catch(err) {
-    description.innerHTML = description.innerHTML + `<br /><h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> Can't load some data</h1>`
-
-    if(selectedMenu == -1) loading.classList.add("e")
+    var title = document.getElementById("title")
+    if(selectedMenu == -1) title.style.animation = "loadingError 2s infinite"
   }
 
   
