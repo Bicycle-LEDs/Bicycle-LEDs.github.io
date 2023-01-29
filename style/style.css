@@ -97,11 +97,11 @@ nav .fa-regular {
   100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
 }
 @keyframes mainPageLoading {
-  0%   {color:yellow; line-height: calc(100vh - 150px)}
-  25%  {color:red; line-height: calc(100vh - 50px)}
-  50%  {color:yellow; line-height: calc(100vh - 150px)}
-  75%  {color:red; line-height: calc(100vh - 250px)}
-  100% {color:yellow; line-height: calc(100vh - 150px)}
+  0%   {color:yellow; line-height: 100vh}
+  25%  {color:red; line-height: calc(100vh + 100px)}
+  50%  {color:yellow; line-height: 100vh}
+  75%  {color:red; line-height: calc(100vh - 100px)}
+  100% {color:yellow; line-height: 100vh}
 }
 @keyframes loadingError {
   0%   {color:rgb(150, 26, 26);}
@@ -125,19 +125,15 @@ nav .fa-regular {
   font-size: 70px;
   font-weight: bold;
   text-align: center;
-  animation-name: loading;
+  animation: loading 2s infinite;
   animation-delay: 0.3s;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
   cursor: not-allowed;
   user-select: none;
 }
 
 #loading #a {
-  animation-name: spinner;
+  animation: spinner 0.5s infinite;
   animation-delay: 0.3s;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
 }
 
 .text-box {
@@ -248,11 +244,11 @@ nav .fa-regular {
     100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
   }
   @keyframes mainPageLoading {
-    0%   {color:yellow; line-height: calc(100vh - 150px)}
-    25%  {color:red; line-height: calc(100vh - 100px)}
-    50%  {color:yellow; line-height: calc(100vh - 150px)}
-    75%  {color:red; line-height: calc(100vh - 200px)}
-    100% {color:yellow; line-height: calc(100vh - 150px)}
+    0%   {color:yellow; line-height: 100vh}
+    25%  {color:red; line-height: calc(100vh + 50px)}
+    50%  {color:yellow; line-height: 100vh}
+    75%  {color:red; line-height: calc(100vh - 50px)}
+    100% {color:yellow; line-height: 100vh}
   }
   #loading {
     height: calc(100vh - 250px - 150px);
@@ -366,37 +362,6 @@ nav .fa-regular {
   font-size: 35px;
   color: #fff;
 }
-.docs .col {
-  color: #fff;
-  float:left;
-  margin-top: 30px;
-  width: 56%;
-  min-height: 80px;
-  font-size: 15px;
-  text-align: right;
-  margin: 1%;
-}
-.docs .sub-col {
-  color: #fff;
-  float:left;
-  margin-top: 30px;
-  width: 40%;
-  min-height: 80px;
-  font-size: 15px;
-  text-align: right;
-  margin: 1%;
-}
-
-.docs .row img {
-  width: 100%;
-  border-radius: 40px;
-}
-
-.docs .row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 @media(max-width: 700px) {
   .docs-header {
@@ -404,17 +369,5 @@ nav .fa-regular {
   }
   .docs-header h3 {
     margin-top: 50px;
-  }
-
-  .docs .col {
-    width: 100%;
-    text-align: center;
-  }
-  .docs .col img {
-    border-radius: 25px;
-  }
-  .docs .sub-col {
-    width: 100%;
-    text-align: center;
   }
 }
