@@ -33,15 +33,8 @@
   100% {color:rgb(150, 26, 26);}
 }
 
-#loading #emojiInLoading {
-  animation: spinner 0.5s infinite;
-  animation-delay: 0.3s;
-}
-
 
 #loading {
-  animation: loading 2s infinite;
-  animation-delay: 0.3s;
   color: yellow;
   position: static;
   width: 100%;

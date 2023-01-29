@@ -4,14 +4,20 @@ var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 var loadingAnim = true
 
-loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
+// Animation load
+setTimeout(() => {
+  loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
+  var emojiInLoading = document.getElementById("emojiInLoading")
+  emojiInLoading.style.animation = "spinner 0.5s infinite"
+  loading.style.animation = "loading 2s infinite"
+  if(loading.classList.contains("mainPageLoading")) {
+    loading.style.lineHeight = "80vh"
+    loading.style.height = "100vh"
+    loading.style.animationName = "mainPageLoading"
+  }
+}, 200);
 
-if(loading.classList.contains("mainPageLoading")) {
-  loading.style.lineHeight = "80vh"
-  loading.style.height = "100vh"
-  loading.style.animationName = "mainPageLoading"
-}
-
+// Error animation
 function error() {
   setTimeout(() => {
     loading.style.animationDelay = "0s"
@@ -25,20 +31,16 @@ function error() {
       loading.style.display = "none"
       main.style.display = "block"
       loading.style.animation = "loading 2s infinite"
-      loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
-      var emojiInLoading = document.getElementById("emojiInLoading")
-      emojiInLoading.style.animationDelay = "0s"
+      loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading" style="animation: spinner 0.5s infinite;"></i> Loading'
     }, loadingAnim ? 2500 : 1);
   }, loadingAnim ? 2000 : 1)
 }
 
+// Remove loading screen
 window.onload = function() {
   setTimeout(() => {
-    var emojiInLoading = document.getElementById("emojiInLoading")
-    emojiInLoading.style.animationDelay = "0s"
     if(loading.classList.contains("e")) {
-      error()
-      return
+      return error()
     }
     loading.style.display = "none"
     main.style.display = "block"
