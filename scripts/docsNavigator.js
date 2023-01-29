@@ -45,8 +45,8 @@ async function asyncMenu() {
 asyncMenu()
 
 window.onload = function() {
-  if(e) return;
   setTimeout(() => {
+    if(e) return;
     loading.style.display = "none"
     main.style.display = "block"
   }, 2000);

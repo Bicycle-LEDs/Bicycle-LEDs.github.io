@@ -96,6 +96,13 @@ nav .fa-regular {
   75%  {color:red; line-height: calc(100vh - 400px - 250px)}
   100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
 }
+@keyframes mainPageLoading {
+  0%   {color:yellow; line-height: calc(100vh - 150px)}
+  25%  {color:red; line-height: calc(100vh - 50px)}
+  50%  {color:yellow; line-height: calc(100vh - 150px)}
+  75%  {color:red; line-height: calc(100vh - 250px)}
+  100% {color:yellow; line-height: calc(100vh - 150px)}
+}
 @keyframes loadingError {
   0%   {color:rgb(150, 26, 26);}
   25%  {color:rgb(255, 16, 16);}
@@ -118,7 +125,6 @@ nav .fa-regular {
   font-size: 70px;
   font-weight: bold;
   text-align: center;
-  animation-delay: 0.5s;
   animation-name: loading;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -127,7 +133,6 @@ nav .fa-regular {
 }
 
 #loading #a {
-  animation-delay: 0.5s;
   animation-name: spinner;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
@@ -139,6 +144,7 @@ nav .fa-regular {
   left: 50%;
   text-align: center;
   justify-content: center;
+  display: none;
 }
 .text-box h1 {
   font-size: 62px;
