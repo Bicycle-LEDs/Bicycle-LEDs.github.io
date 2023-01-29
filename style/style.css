@@ -6,6 +6,55 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+@keyframes spinner {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+#loading #a {
+  animation: spinner 0.5s infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes loading {
+  0%   {color:yellow; line-height: calc(100vh - 400px - 150px)}
+  25%  {color:red; line-height: calc(100vh - 400px - 50px)}
+  50%  {color:yellow; line-height: calc(100vh - 400px - 150px)}
+  75%  {color:red; line-height: calc(100vh - 400px - 250px)}
+  100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
+}
+@keyframes mainPageLoading {
+  0%   {color:yellow; line-height: 80vh}
+  25%  {color:red; line-height: calc(80vh + 100px)}
+  50%  {color:yellow; line-height: 80vh}
+  75%  {color:red; line-height: calc(80vh - 100px)}
+  100% {color:yellow; line-height: 80vh}
+}
+
+@keyframes loadingError {
+  0%   {color:rgb(150, 26, 26);}
+  25%  {color:rgb(255, 16, 16);}
+  50%  {color:rgb(150, 26, 26);}
+  75%  {color:rgb(255, 16, 16);}
+  100% {color:rgb(150, 26, 26);}
+}
+
+#loading {
+  color: yellow;
+  position: static;
+  width: 100%;
+  height: calc(100vh - 400px - 150px);
+  line-height: calc(100vh - 400px - 150px);
+  background-color: black;
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  animation: loading 2s infinite;
+  animation-delay: 0.3s;
+  cursor: not-allowed;
+  user-select: none;
+}
+
 .announcment {
   text-align: center;
   font-size: 25px;
@@ -89,53 +138,6 @@ nav .fa-regular {
   cursor: not-allowed;
 }
 
-@keyframes loading {
-  0%   {color:yellow; line-height: calc(100vh - 400px - 150px)}
-  25%  {color:red; line-height: calc(100vh - 400px - 50px)}
-  50%  {color:yellow; line-height: calc(100vh - 400px - 150px)}
-  75%  {color:red; line-height: calc(100vh - 400px - 250px)}
-  100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
-}
-@keyframes mainPageLoading {
-  0%   {color:yellow; line-height: 80vh}
-  25%  {color:red; line-height: calc(80vh + 100px)}
-  50%  {color:yellow; line-height: 80vh}
-  75%  {color:red; line-height: calc(80vh - 100px)}
-  100% {color:yellow; line-height: 80vh}
-}
-@keyframes loadingError {
-  0%   {color:rgb(150, 26, 26);}
-  25%  {color:rgb(255, 16, 16);}
-  50%  {color:rgb(150, 26, 26);}
-  75%  {color:rgb(255, 16, 16);}
-  100% {color:rgb(150, 26, 26);}
-}
-@keyframes spinner {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(360deg);}
-}
-
-#loading {
-  color: yellow;
-  position: static;
-  width: 100%;
-  height: calc(100vh - 400px - 150px);
-  line-height: calc(100vh - 400px - 150px);
-  background-color: black;
-  font-size: 70px;
-  font-weight: bold;
-  text-align: center;
-  animation: loading 2s infinite;
-  animation-delay: 0.3s;
-  cursor: not-allowed;
-  user-select: none;
-}
-
-#loading #a {
-  animation: spinner 0.5s infinite;
-  animation-delay: 0.3s;
-}
-
 .text-box {
   color: #fff;
   top: 50%;
@@ -175,6 +177,26 @@ nav .fa-regular {
 }
 
 @media(max-width: 700px) {
+  @keyframes loading {
+    0%   {color:yellow; line-height: calc(100vh - 250px - 150px)}
+    25%  {color:red; line-height: calc(100vh - 250px - 100px)}
+    50%  {color:yellow; line-height: calc(100vh - 250px - 150px)}
+    75%  {color:red; line-height: calc(100vh - 250px - 200px)}
+    100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
+  }
+  @keyframes mainPageLoading {
+    0%   {color:yellow; line-height: 80vh}
+    25%  {color:red; line-height: calc(80vh + 50px)}
+    50%  {color:yellow; line-height: 80vh}
+    75%  {color:red; line-height: calc(80vh - 50px)}
+    100% {color:yellow; line-height: 80vh}
+  }
+  #loading {
+    height: calc(100vh - 250px - 150px);
+    line-height: calc(100vh - 250px - 150px);
+    font-size: 40px;
+  }
+  
   .text-box h1 {
     font-size: 45px;
   }
@@ -235,25 +257,6 @@ nav .fa-regular {
   nav .fa-regular:hover {
     color: #f44336;
     transition: 0.3s;
-  }
-  @keyframes loading {
-    0%   {color:yellow; line-height: calc(100vh - 250px - 150px)}
-    25%  {color:red; line-height: calc(100vh - 250px - 100px)}
-    50%  {color:yellow; line-height: calc(100vh - 250px - 150px)}
-    75%  {color:red; line-height: calc(100vh - 250px - 200px)}
-    100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
-  }
-  @keyframes mainPageLoading {
-    0%   {color:yellow; line-height: 80vh}
-    25%  {color:red; line-height: calc(80vh + 50px)}
-    50%  {color:yellow; line-height: 80vh}
-    75%  {color:red; line-height: calc(80vh - 50px)}
-    100% {color:yellow; line-height: 80vh}
-  }
-  #loading {
-    height: calc(100vh - 250px - 150px);
-    line-height: calc(100vh - 250px - 150px);
-    font-size: 40px;
   }
 }
 
