@@ -9,7 +9,10 @@ setTimeout(() => {
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
-  loading.style.animation = "loading 2s infinite"
+  if(window.innerHeight < 735) {
+    loading.style.animation = "loadingWithoutFly 2s infinite"
+  }
+  else loading.style.animation = "loading 2s infinite"
   if(loading.classList.contains("mainPageLoading")) {
     loading.style.lineHeight = "80vh"
     loading.style.height = "100vh"
@@ -30,7 +33,8 @@ function error() {
     setTimeout(() => {
       loading.style.display = "none"
       main.style.display = "block"
-      loading.style.animation = "loading 2s infinite"
+      if(window.innerHeight < 735) loading.style.animation = "loadingWithoutFly 2s infinite" 
+      else loading.style.animation = "loading 2s infinite"
       loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading" style="animation: spinner 0.5s infinite;"></i> Loading'
     }, loadingAnim ? 2500 : 1);
   }, loadingAnim ? 2000 : 1)

@@ -17,6 +17,13 @@
   75%  {color:red; line-height: calc(100vh - 400px - 250px)}
   100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
 }
+@keyframes loadingWithoutFly {
+  0%   {color:yellow;}
+  25%  {color:red;}
+  50%  {color:yellow;}
+  75%  {color:red;}
+  100% {color:yellow;}
+}
 @keyframes mainPageLoading {
   0%   {color:yellow; line-height: 80vh}
   25%  {color:red; line-height: calc(80vh + 100px)}
