@@ -11,11 +11,11 @@
   100% {transform: rotate(360deg);}
 }
 @keyframes loading {
-  0%   {color:yellow; line-height: calc(100vh - 400px - 150px)}
-  25%  {color:red; line-height: calc(100vh - 400px - 50px)}
-  50%  {color:yellow; line-height: calc(100vh - 400px - 150px)}
-  75%  {color:red; line-height: calc(100vh - 400px - 250px)}
-  100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
+  0%   {color:yellow; line-height: calc(100vh - 30vh - 150px)}
+  25%  {color:red; line-height: calc(100vh - 30vh - 50px)}
+  50%  {color:yellow; line-height: calc(100vh - 30vh - 150px)}
+  75%  {color:red; line-height: calc(100vh - 30vh - 250px)}
+  100% {color:yellow; line-height: calc(100vh - 30vh - 150px)}
 }
 @keyframes mainPageLoading {
   0%   {color:yellow; line-height: 80vh}
@@ -38,8 +38,8 @@
   color: yellow;
   position: static;
   width: 100%;
-  height: calc(100vh - 400px - 150px);
-  line-height: calc(100vh - 400px - 150px);
+  height: calc(100vh - 30vh - 150px);
+  line-height: calc(100vh - 30vh - 150px);
   background-color: black;
   font-size: 70px;
   font-weight: bold;
@@ -171,11 +171,11 @@ nav .fa-regular {
 
 @media(max-width: 700px) {
   @keyframes loading {
-    0%   {color:yellow; line-height: calc(100vh - 250px - 150px)}
-    25%  {color:red; line-height: calc(100vh - 250px - 100px)}
-    50%  {color:yellow; line-height: calc(100vh - 250px - 150px)}
-    75%  {color:red; line-height: calc(100vh - 250px - 200px)}
-    100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
+    0%   {color:yellow; line-height: calc(100vh - 30vh - 150px)}
+    25%  {color:red; line-height: calc(100vh - 30vh - 100px)}
+    50%  {color:yellow; line-height: calc(100vh - 30vh - 150px)}
+    75%  {color:red; line-height: calc(100vh - 30vh - 200px)}
+    100% {color:yellow; line-height: calc(100vh - 30vh - 150px)}
   }
   @keyframes mainPageLoading {
     0%   {color:yellow; line-height: 80vh}
@@ -185,8 +185,8 @@ nav .fa-regular {
     100% {color:yellow; line-height: 80vh}
   }
   #loading {
-    height: calc(100vh - 250px - 150px);
-    line-height: calc(100vh - 250px - 150px);
+    height: calc(100vh - 30vh - 150px);
+    line-height: calc(100vh - 30vh - 150px);
     font-size: 40px;
   }
 
@@ -256,7 +256,7 @@ nav .fa-regular {
 /* --- About page --- */
 
 .sub-header {
-  height: 400px;
+  height: 30vh;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(../images/galaxy.jpg);
   background-position: center;
@@ -266,12 +266,12 @@ nav .fa-regular {
   display: block;
 }
 .sub-header h3 {
-  margin-top: 80px;
+  margin-top: 5vh;
   font-size: 40px;
 }
 
 .about {
-  min-height: calc(100vh - 400px - 150px);
+  min-height: calc(100vh - 30vh - 150px);
   width: 100%;
   margin: auto;
   padding: 25px;
@@ -304,10 +304,10 @@ nav .fa-regular {
 
 @media(max-width: 700px) {
   .sub-header {
-    height: 250px;
+    height: 30vh;
   }
   .sub-header h3 {
-    margin-top: 50px;
+    margin-top: 3vh;
   }
 
   .about .col {
@@ -318,7 +318,7 @@ nav .fa-regular {
 /* --- Docs page --- */
 
 .docs-header {
-  height: 400px;
+  height: 30vh;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.8)), url(../images/space-exploration.jpg);
   background-position: center;
@@ -327,12 +327,12 @@ nav .fa-regular {
   color: #fff;
 }
 .docs-header h3 {
-  margin-top: 80px;
+  margin-top: 5vh;
   font-size: 40px;
 }
 
 .docs {
-  min-height: calc(100vh - 400px - 150px);
+  min-height: calc(100vh - 30vh - 150px);
   width: 100%;
   background: rgb(26, 25, 25);
   margin: auto;
@@ -383,10 +383,10 @@ nav .fa-regular {
 
 @media(max-width: 700px) {
   .docs-header {
-    height: 250px;
+    height: 30vh;
   }
   .docs-header h3 {
-    margin-top: 50px;
+    margin-top: 3vh;
   }
 
   .docs .menu {
