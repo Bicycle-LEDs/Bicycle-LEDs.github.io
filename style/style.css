@@ -196,7 +196,7 @@ nav .fa-regular {
     line-height: calc(100vh - 250px - 150px);
     font-size: 40px;
   }
-  
+
   .text-box h1 {
     font-size: 45px;
   }
@@ -349,6 +349,13 @@ nav .fa-regular {
 
 .docs .menu {
   width: 20%;
+}
+.docs .menu ul {
+  display: block;
+  text-decoration: ;
+  cursor: pointer;
+  color: red;
+  padding-bottom: 10px;
 }
 .docs .menu ul li {
   display: block;
