@@ -97,11 +97,11 @@ nav .fa-regular {
   100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
 }
 @keyframes mainPageLoading {
-  0%   {color:yellow; line-height: 100vh}
-  25%  {color:red; line-height: calc(100vh + 100px)}
-  50%  {color:yellow; line-height: 100vh}
-  75%  {color:red; line-height: calc(100vh - 100px)}
-  100% {color:yellow; line-height: 100vh}
+  0%   {color:yellow; line-height: 80vh}
+  25%  {color:red; line-height: calc(80vh + 100px)}
+  50%  {color:yellow; line-height: 80vh}
+  75%  {color:red; line-height: calc(80vh - 100px)}
+  100% {color:yellow; line-height: 80vh}
 }
 @keyframes loadingError {
   0%   {color:rgb(150, 26, 26);}
@@ -244,11 +244,11 @@ nav .fa-regular {
     100% {color:yellow; line-height: calc(100vh - 250px - 150px)}
   }
   @keyframes mainPageLoading {
-    0%   {color:yellow; line-height: 100vh}
-    25%  {color:red; line-height: calc(100vh + 50px)}
-    50%  {color:yellow; line-height: 100vh}
-    75%  {color:red; line-height: calc(100vh - 50px)}
-    100% {color:yellow; line-height: 100vh}
+    0%   {color:yellow; line-height: 80vh}
+    25%  {color:red; line-height: calc(80vh + 50px)}
+    50%  {color:yellow; line-height: 80vh}
+    75%  {color:red; line-height: calc(80vh - 50px)}
+    100% {color:yellow; line-height: 80vh}
   }
   #loading {
     height: calc(100vh - 250px - 150px);

@@ -43,7 +43,7 @@ var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 
 if(loading.classList.contains("mainPageLoading")) {
-  loading.style.lineHeight = "100vh"
+  loading.style.lineHeight = "80vh"
   loading.style.height = "100vh"
   loading.style.animationName = "mainPageLoading"
 }
