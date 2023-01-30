@@ -1,8 +1,9 @@
 // <-- Version num -->
 async function versionNum() {
   var versionNum = document.getElementById("version")
-  let versionNumlink = "https://raw.githubusercontent.com/Bicycle-LEDs/Bicycle-LEDs.github.io/main/version.txt"
-  if(await fetch(versionNumlink, { method: 'HEAD' }).ok) versionNum.innerHTML = '<i class="fa-solid fa-gears"></i> v' + await fetch(versionNumlink)
+  let versionNumLink = "https://raw.githubusercontent.com/Bicycle-LEDs/Bicycle-LEDs.github.io/main/version.txt"
+  let number = await fetch(versionNumLink)
+  if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ' v' + await number.text()
 }
 
 versionNum()

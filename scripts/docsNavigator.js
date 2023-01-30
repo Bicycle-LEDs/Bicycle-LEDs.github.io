@@ -22,7 +22,7 @@ async function build() {
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
-    versionNum.innerHTML = '<i class="i fa-solid fa-code-compare"></i> v' + modules[0].version
+    docsVersion.innerHTML = '<i class="i fa-solid fa-code-compare"></i> v' + modules[0].version
 
     for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())

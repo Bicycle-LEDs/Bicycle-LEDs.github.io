@@ -139,6 +139,10 @@ nav .fa-regular {
   float: left;
   cursor: not-allowed;
   font-weight: bold;
+  padding-left: 0px;
+}
+.nav-links ul #version .i {
+  color: green;
 }
 
 .text-box {
