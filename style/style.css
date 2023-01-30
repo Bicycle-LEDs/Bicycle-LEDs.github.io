@@ -57,7 +57,7 @@
   text-align: center;
   font-size: 25px;
   color: yellow;
-  background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.05), #f443369f, rgba(255, 255, 255, 0.05));
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05), #f443369f, rgba(255, 255, 255, 0.05));
 }
 
 @media(max-width: 700px) {
@@ -292,19 +292,62 @@ nav .fa-regular {
   color: #fff;
   float:left;
   margin-top: 30px;
-  width: 50%;
+  width: calc(50% - 10px);
   min-height: 80px;
-  font-size: 15px;
-  text-align: center;
+  text-align: left;
+}
+
+.about .col h2 {
+  font-size: 35px;
+}
+.about .col p {
+  font-size: 25px;
 }
 .about .col img {
   width: 100%;
+}
+.about .col .av {
+  width: 40px;
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.about .mainCol {
+  color: #fff;
+  margin-top: 100px;
+  padding-top: 50px;
+  border-top: 6px solid;
+  border-image-source: linear-gradient(to right, rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8), rgb(26, 25, 25),  rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8));
+  border-image-slice: 1;
+  width: 100%;
+  text-align: center;
+}
+.about .mainCol h2 {
+  font-size: 35px;
+}
+.about .mainCol p {
+  font-size: 25px;
+}
+.about .mainCol img {
+  height: 40%;
+}
+.about .mainCol .i {
+  color: #f44336;
 }
 
 .about .row::after {
   content: "";
   display: table;
   clear: both;
+}
+.about .row .col:last-child {
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left: 3px solid;
+  border-image-source: linear-gradient(rgb(26, 25, 25), rgba(38, 155, 22, 0.8), rgb(26, 25, 25));
+  border-image-slice: 1;
 }
 
 @media(max-width: 700px) {
@@ -317,6 +360,41 @@ nav .fa-regular {
 
   .about .col {
     width: 100%;
+    text-align: center;
+  }
+  .about .col h2 {
+    font-size: 30px;
+  }
+  .about .col p {
+    font-size: 20px;
+  }
+  .about .col .av {
+    width: 50px;
+    float: unset;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .about .mainCol {
+    border-top: 3px solid;
+  }
+  .about .mainCol h2 {
+    font-size: 25px;
+  }
+  .about .mainCol p {
+    font-size: 15px;
+  }
+  .about .mainCol img {
+    width: 100%
+  }
+  .about .row .col:last-child {
+    padding-left: 0px;
+    margin-left: 0px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-left: none;
+    border-bottom: 3px solid;
+    border-image-source: linear-gradient(to right, rgb(26, 25, 25), rgba(38, 155, 22, 0.8), rgb(26, 25, 25));
+    border-image-slice: 1;
   }
 }
 
@@ -334,6 +412,9 @@ nav .fa-regular {
 .docs-header h3 {
   margin-top: 80px;
   font-size: 40px;
+}
+.docs-header .i {
+  color: rgb(28, 151, 12);
 }
 
 .docs {

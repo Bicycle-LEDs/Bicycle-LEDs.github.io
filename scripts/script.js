@@ -12,8 +12,8 @@ function hideMenu() {
 var globalAnnouncment = ''
 
 var mainAnnouncment = '',
-    aboutAnnouncment = '',
-    docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Docs - work in progress <i class="fa-solid fa-wrench"></i>'
+    aboutAnnouncment = '<i class="fa-solid fa-wrench"></i> Work in progress',
+    docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Work in progress'
 
 var fileName = location.href.split("/").slice(-1), text;
 
