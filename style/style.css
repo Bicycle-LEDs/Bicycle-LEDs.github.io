@@ -396,6 +396,11 @@ nav .fa-regular {
     border-image-source: linear-gradient(to right, rgb(26, 25, 25), rgba(38, 155, 22, 0.8), rgb(26, 25, 25));
     border-image-slice: 1;
   }
+  .about .row #lastCol {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border-bottom: none;
+  }
 }
 
 /* --- Docs page --- */
