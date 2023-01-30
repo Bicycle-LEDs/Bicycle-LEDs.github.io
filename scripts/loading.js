@@ -14,7 +14,14 @@ setTimeout(() => {
   var emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
   if (loading.classList.contains("mainPageLoading")) loading.style.animation = "mainPageLoading 2s infinite"
-  else if(window.innerHeight < 735 && window.innerWidth > 700) loading.style.animation = "loadingWithoutFly 2s infinite"
+  else if(window.innerHeight < 735 && window.innerWidth > 700) {
+    loading.style.animation = "loadingWithoutFly 2s infinite"
+    console.log(window.innerHeight)
+    if(window.innerHeight < 635) {
+      loading.style.height = "90px"
+      loading.style.lineHeight = "90px"
+    }
+  }
   else loading.style.animation = "loading 2s infinite"
 }, 300);
 
