@@ -351,7 +351,7 @@ nav .fa-regular {
 }
 .docs .col {
   float:left;
-  width: calc((100% - 15vw - 25px) / 2);
+  width: calc((100vw - 15vw - 50px) / 2);
   padding: 10px;
 }
 
@@ -446,6 +446,9 @@ nav .fa-regular {
 
 
 @media(max-width: 700px) {
+  .docs {
+    min-height: calc(100vh - 250px - 150px);
+  }
   .docs-header {
     height: 250px;
   }

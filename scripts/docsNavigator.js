@@ -8,15 +8,17 @@ var selectedMenu = -1
 var selectedSubMenu = -1
 var subClicked = false
 
-async function buildMenu(firstRun = false) {
+async function build() {
 
-  if(!firstRun) {
-    loading.style.display = "block"
-    main.style.display = "none"
-  }  
+  loading.style.display = "block"
+  main.style.display = "none"
 
   try {
     menu.innerHTML = ""
+    description.innerHTML = ""
+    image.innerHTML = ""
+
+    // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
 
     for (let k = 0; k < modules.length; k++) {
@@ -32,28 +34,15 @@ async function buildMenu(firstRun = false) {
 
       menu.innerHTML = menu.innerHTML + "</ul>"
     }
-  }
 
-  catch(err) {
-    var title = document.getElementById("title")
-    if(firstRun) title.style.animation = "loadingError 2s infinite"
-  }
-}
+    // Description builder
+    if(selectedMenu == -1) {
+      description.innerHTML = '<h1><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
+      return
+    }
 
-async function showDocs() {
-
-  description.innerHTML = ""
-
-  if(selectedMenu == -1) {
-    description.innerHTML = '<h1><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
-    return
-  }
-
-  try {
-
-    let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    
     let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
-
     if(selectedSubMenu != -1) {
 
       // Component info
@@ -74,9 +63,9 @@ async function showDocs() {
       else image.innerHTML = `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
 
     }
-
+  
     else {
-
+  
       // Module info
 
       // Name
@@ -95,35 +84,44 @@ async function showDocs() {
     }
   }
 
-  catch(err) {
+  catch(error) {
     var title = document.getElementById("title")
-    if(selectedMenu == -1) title.style.animation = "loadingError 2s infinite"
+    title.style.animation = "loadingError 5s infinite"
+    main.innerHTML = ""
+    loading.style.display = "none"
+    main.style.display = "block"
   }
+}
 
-  
+async function show() {
+  await build()
   setTimeout(() => {
     loading.style.display = "none"
     main.style.display = "block"
-  }, 400);
+  }, 600);
 }
 
-
-buildMenu(true)
-showDocs()
+// Animation load
+setTimeout(() => {
+  loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
+  var emojiInLoading = document.getElementById("emojiInLoading")
+  emojiInLoading.style.animation = "spinner 0.5s infinite"
+  if(window.innerHeight < 735 && window.innerWidth > 700) loading.style.animation = "loadingWithoutFly 2s infinite"
+  else loading.style.animation = "loading 2s infinite"
+}, 300);
+show()
 
 async function mainDoc(moduleNum) {
   if(subClicked) return
   selectedMenu = moduleNum
   selectedSubMenu = -1
-  await buildMenu()
-  await showDocs()
+  show()
 }
 
 async function subDoc(moduleNum, componentNum) {
   subClicked = true
   selectedMenu = moduleNum
   selectedSubMenu = componentNum
-  await buildMenu()
-  await showDocs()
+  await show()
   subClicked = false
 }
