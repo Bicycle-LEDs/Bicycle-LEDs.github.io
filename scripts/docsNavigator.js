@@ -4,6 +4,7 @@ var image = document.getElementById("image")
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 var title = document.getElementById("title")
+var docsVersion = document.getElementById("docsVersion")
 
 var selectedMenu = -1
 var selectedSubMenu = -1
@@ -21,8 +22,9 @@ async function build() {
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    versionNum.innerHTML = '<i class="i fa-solid fa-code-compare"></i> v' + modules[0].version
 
-    for (let k = 0; k < modules.length; k++) {
+    for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
       if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" class="selected" id="' + modules[k].name + '">' + modules[k].name
       else menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
@@ -40,7 +42,7 @@ async function build() {
     description.innerHTML = ''
     if(selectedMenu == -1) {
       if(window.innerWidth > 700) {
-        description.style.width = "80vw"
+        description.style.width = "80%"
         description.style.marginTop = "20vh"
       }
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'

@@ -93,6 +93,7 @@ nav .fa-regular {
 }
 
 .nav-links {
+  color: white;
   flex: 1;
   text-align: right;
 }
@@ -132,8 +133,12 @@ nav .fa-regular {
 .nav-links ul li .link:hover::after {
   width: 100%;
 }
-.nav-links ul li .inactive {
+
+.nav-links ul #version {
+  text-align: left;
+  float: left;
   cursor: not-allowed;
+  font-weight: bold;
 }
 
 .text-box {
@@ -208,7 +213,7 @@ nav .fa-regular {
   }
   .organ-btn {
     padding: 10px 20px;
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .nav-links ul li {
@@ -216,9 +221,12 @@ nav .fa-regular {
     background-image: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5));
     cursor: default;
   }
+  .nav-links ul {
+    margin-top: -50px;
+  }
   .nav-links {
     position: fixed;
-    background: linear-gradient(rgba(25,25,112,1),rgba(25,25,112,1), rgba(25,25,112,0.5),rgba(25,25,112,0.2));
+    background: linear-gradient(rgba(25,25,112,1),rgba(25,25,112,1), rgba(25,25,112,0.5),rgba(25,25,112,0.2), rgba(25,25,112,1));
     height: 100vh;
     width: 140px;
     top: 0;
@@ -239,6 +247,12 @@ nav .fa-regular {
   .nav-links ul li .here {
     color: yellow;
   }
+  .nav-links ul #version {
+    text-align: right;
+    float: none;
+    top: calc(100vh - 40px);
+    background-image: none;
+  }
   nav .fa-regular {
     color: #fff;
     display: block;
@@ -250,7 +264,7 @@ nav .fa-regular {
   }
   nav .fa-square-plus {
     margin: 7px;
-    margin-left: 90vw;
+    margin-left: 92%;
   }
   nav .fa-regular:hover {
     color: #f44336;
@@ -421,16 +435,20 @@ nav .fa-regular {
   margin-top: 80px;
   font-size: 40px;
 }
+.docs-header h4 {
+  margin-top: -10px;
+  font-size: 16px;
+}
 .docs-header .i {
   color: rgb(28, 151, 12);
 }
 
 .docs {
-  min-height: calc(100vh - 400px - 150px);
-  width: 100vw;
+  min-height: calc(100% - 400px - 150px);
+  width: 100%;
   background: rgb(26, 25, 25);
   margin: auto;
-  padding: 25px;
+  padding: 20px;
   display: none;
 }
 .docs .row::after {
@@ -440,16 +458,16 @@ nav .fa-regular {
 }
 .docs .col {
   float:left;
-  width: calc((100vw - 15vw - 50px) / 2);
+  width: calc((100% - 20%) / 2);
   padding: 10px;
 }
 
 .docs #menu {
-  width: 15vw;
+  width: 20%;
   padding-right: 0px;
 }
 .docs #menu ul {
-  font-size: 30px;
+  font-size: 2vw;
   display: block;
   text-decoration: none;
   font-weight: bold;
