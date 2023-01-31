@@ -5,6 +5,7 @@ var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 var title = document.getElementById("title")
 var docsVersion = document.getElementById("docsVersion")
+var docsVersionTemp
 
 var selectedMenu = -1
 var selectedSubMenu = -1
@@ -22,7 +23,7 @@ async function build() {
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
-    docsVersion.innerHTML = '<i class="i fa-solid fa-code-compare"></i> Build ' + modules[0].version
+    docsVersionTemp = '<i class="i fa-solid fa-code-compare"></i> Build ' + modules[0].version
 
     for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
@@ -95,6 +96,7 @@ async function build() {
     setTimeout(() => {
       loading.style.display = "none"
       main.style.display = "block"
+      docsVersion.innerHTML = docsVersionTemp
     }, 600);
   }
 
