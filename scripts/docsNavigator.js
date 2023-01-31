@@ -26,8 +26,6 @@ async function build() {
 
     // Clear
     menu.innerHTML = ''
-    description.innerHTML = ''
-    image.innerHTML = ''
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
@@ -65,6 +63,7 @@ async function build() {
       description.style.width = ''
       description.style.marginTop = ''
       description.innerHTML = ''
+      image.innerHTML = ''
 
       // Description builder
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
@@ -90,10 +89,11 @@ async function build() {
         */
 
         // Image
-        let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
-        if(checkImage.ok) image.innerHTML = '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
-        else image.innerHTML = `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
-  
+        for (let i = 0; i < moduleJson.components[selectedSubMenu].pictures.length; i++) {
+          let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i], { method: 'HEAD' })
+          if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i] + '">'
+          else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
+        }
       }
     
       // Selected submenu
@@ -114,9 +114,11 @@ async function build() {
         */
   
         // Image
-        let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture, { method: 'HEAD' })
-        if(checkImage.ok) image.innerHTML = '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture + '">'
-        else image.innerHTML = `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
+        for (let i = 0; i < moduleJson.pictures.length; i++) {
+          let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i], { method: 'HEAD' })
+          if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i] + '">'
+          else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
+        }
       }
     }
     
@@ -134,6 +136,7 @@ async function build() {
     main.innerHTML = ''
     loading.style.display = "none"
     main.style.display = "block"
+    console.error("Error occured: \n" + error)
   }
 }
 
