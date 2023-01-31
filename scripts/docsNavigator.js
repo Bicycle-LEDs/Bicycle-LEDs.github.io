@@ -35,18 +35,21 @@ async function build() {
 
     for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
-      // If no submenu selected, highlight menu
-      if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" class="selected" id="' + modules[k].name + '">' + modules[k].name
-      else menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
-      let moduleMenu = document.getElementById(modules[k].name)
+      if(!moduleJson.disabled) {
+        // If no submenu selected, highlight menu
+        if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" class="selected" id="' + modules[k].name + '">' + modules[k].name
+        else menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
+        let moduleMenu = document.getElementById(modules[k].name)
+  
+        for (let i = 0; i < moduleJson.components.length; i++) {
+          // If submenu selected, highlight it
+          if(moduleJson.components[i].disabled) return
+          if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML  + '<li class="selected" onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
+          else moduleMenu.innerHTML = moduleMenu.innerHTML + '<li onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
+        }
 
-      for (let i = 0; i < moduleJson.components.length; i++) {
-        // If submenu selected, highlight it
-        if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML + "\n" + '<li class="selected" onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
-        else moduleMenu.innerHTML = moduleMenu.innerHTML + "\n" + '<li onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
+        menu.innerHTML = menu.innerHTML + "</ul>"
       }
-
-      menu.innerHTML = menu.innerHTML + "</ul>"
     }
 
     // If just loaded page
@@ -79,6 +82,13 @@ async function build() {
         if(moduleJson.components[selectedSubMenu].description) description.innerHTML = description.innerHTML + '<h3><i class="i fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].description + '</h3>'
         else description.innerHTML = description.innerHTML + `<h3 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No description</h3>`
   
+        // Buy links
+        /*
+        ------------
+        --- TODO ---
+        ------------
+        */
+
         // Image
         let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture, { method: 'HEAD' })
         if(checkImage.ok) image.innerHTML = '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].picture + '">'
