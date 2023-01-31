@@ -1,14 +1,14 @@
-// <-- Loading animation -->
-
+// Get document elements
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 
+// Change animation style if it's main page
 if(loading.classList.contains("mainPageLoading")) {
     loading.style.lineHeight = "80vh"
     loading.style.height = "100vh"
 }
 
-// Animation load
+// Run animation
 setTimeout(() => {
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
@@ -17,7 +17,7 @@ setTimeout(() => {
   else loading.style.animation = "loading 2s infinite"
 }, 300);
 
-// Remove loading screen
+// Remove loading screen, show content
 window.onload = function() {
   setTimeout(() => {
     loading.style.display = "none"

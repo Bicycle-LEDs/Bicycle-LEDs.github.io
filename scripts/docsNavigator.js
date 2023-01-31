@@ -1,3 +1,4 @@
+// Get document elements
 var menu = document.getElementById("menu")
 var description = document.getElementById("description")
 var image = document.getElementById("image")
@@ -5,21 +6,28 @@ var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
 var title = document.getElementById("title")
 var docsVersion = document.getElementById("docsVersion")
-var docsVersionTemp
 
+
+// Some temp values
+var docsVersionTemp
 var selectedMenu = -1
 var selectedSubMenu = -1
 var subClicked = false
 
+
+// Main function
 async function build() {
 
+  // Hide docs, show loading
   loading.style.display = "block"
   main.style.display = "none"
 
   try {
-    menu.innerHTML = ""
-    description.innerHTML = ""
-    image.innerHTML = ""
+
+    // Clear
+    menu.innerHTML = ''
+    description.innerHTML = ''
+    image.innerHTML = ''
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
@@ -27,11 +35,13 @@ async function build() {
 
     for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
+      // If no submenu selected, highlight menu
       if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" class="selected" id="' + modules[k].name + '">' + modules[k].name
       else menu.innerHTML = menu.innerHTML + "\n" + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
       let moduleMenu = document.getElementById(modules[k].name)
 
       for (let i = 0; i < moduleJson.components.length; i++) {
+        // If submenu selected, highlight it
         if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML + "\n" + '<li class="selected" onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
         else moduleMenu.innerHTML = moduleMenu.innerHTML + "\n" + '<li onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
       }
@@ -39,21 +49,25 @@ async function build() {
       menu.innerHTML = menu.innerHTML + "</ul>"
     }
 
-    // Description builder
-    description.innerHTML = ''
+    // If just loaded page
     if(selectedMenu == -1) {
       description.classList.add("noData")
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
       document.getElementById("err").style.animation = "loadingError 5s infinite"
     }
     else {
+
+      // Clear
       description.classList.remove("noData")
-      description.style.width = ""
-      description.style.marginTop = ""
+      description.style.width = ''
+      description.style.marginTop = ''
+      description.innerHTML = ''
+
+      // Description builder
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
+
+      // No submenu selected
       if(selectedSubMenu != -1) {
-  
-        // Component info
   
         // Name
         description.innerHTML = '<h1><i class="i fa-solid fa-atom"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
@@ -72,10 +86,9 @@ async function build() {
   
       }
     
+      // Selected submenu
       else {
-    
-        // Module info
-  
+      
         // Name
         description.innerHTML = '<h1><i class="i fa-solid fa-box-archive"></i> ' + moduleJson.name + '</h1>'
   
@@ -84,6 +97,11 @@ async function build() {
         else description.innerHTML = description.innerHTML + `<h2 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No subtitle</h2>`
   
         // Description
+        /*
+        ------------
+        --- TODO ---
+        ------------
+        */
   
         // Image
         let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.picture, { method: 'HEAD' })
@@ -92,7 +110,7 @@ async function build() {
       }
     }
     
-
+    // Show docs again, hide loading
     setTimeout(() => {
       loading.style.display = "none"
       main.style.display = "block"
@@ -100,21 +118,23 @@ async function build() {
     }, 600);
   }
 
+  // On error hide loading and clear content 
   catch(error) {
     title.style.animation = "loadingError 5s infinite"
-    main.innerHTML = ""
+    main.innerHTML = ''
     loading.style.display = "none"
     main.style.display = "block"
   }
 }
 
-// Animation load
+// Change title depending on screen width
 if(window.innerWidth < 350) title.innerHTML = "Docs"
 window.onresize = () => {
   if(window.innerWidth < 350) title.innerHTML = "Docs"
   else title.innerHTML = "Documentation"
 }
 
+// Load animation, from there to provide synchronous movement
 setTimeout(() => {
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
@@ -123,13 +143,13 @@ setTimeout(() => {
   build()
 }, 300);
 
+// Functions from menu items
 async function mainDoc(moduleNum) {
   if(subClicked) return
   selectedMenu = moduleNum
   selectedSubMenu = -1
   build()
 }
-
 async function subDoc(moduleNum, componentNum) {
   subClicked = true
   selectedMenu = moduleNum
