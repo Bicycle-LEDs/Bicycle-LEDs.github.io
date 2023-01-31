@@ -24,13 +24,6 @@
   75%  {color:red; line-height: calc(100vh - 400px - 250px)}
   100% {color:yellow; line-height: calc(100vh - 400px - 150px)}
 }
-@keyframes loadingWithoutFly {
-  0%   {color:yellow;}
-  25%  {color:red;}
-  50%  {color:yellow;}
-  75%  {color:red;}
-  100% {color:yellow;}
-}
 @keyframes mainPageLoading {
   0%   {color:yellow; line-height: 80vh}
   25%  {color:red; line-height: calc(80vh + 100px)}
@@ -201,6 +194,22 @@ iframe[seamless] {
   }
 }
 
+@media (max-height: 735px) and (min-width: 700px) {
+  @keyframes loading {
+    0%   {color:yellow;}
+    25%  {color:red;}
+    50%  {color:yellow;}
+    75%  {color:red;}
+    100% {color:yellow;}
+  }
+}
+@media (max-height: 635px) and (min-width: 700px) {
+  #loading {
+    height: 90px;
+    line-height: 90px;
+  }
+}
+
 
 /* 
 --------------------------------------------------------
@@ -271,15 +280,6 @@ iframe[seamless] {
   .organ-btn {
     padding: 10px 20px;
     font-size: 15px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .header {
-    background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(../images/blackhole.jpg);
-  }
-  .text-box {
-    color: white;
   }
 }
 
@@ -542,6 +542,10 @@ iframe[seamless] {
 .docs #description .info i {
   color: rgb(255, 0, 0);
 }
+.docs .noData {
+  width: 80%;
+  line-height: 50vh;
+}
 .docs #image {
   text-align: center;
 }
@@ -619,6 +623,10 @@ iframe[seamless] {
     margin-top: 15px;
     font-size: 20px;
     text-align: center;
+  }
+  .docs .noData {
+    width: 100%;
+    line-height: auto;
   }
   .docs #image h1 {
     margin-top: 10px;

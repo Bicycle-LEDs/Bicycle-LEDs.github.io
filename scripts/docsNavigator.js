@@ -41,14 +41,12 @@ async function build() {
     // Description builder
     description.innerHTML = ''
     if(selectedMenu == -1) {
-      if(window.innerWidth > 700) {
-        description.style.width = "80%"
-        description.style.marginTop = "20vh"
-      }
+      description.classList.add("noData")
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
       document.getElementById("err").style.animation = "loadingError 5s infinite"
     }
     else {
+      description.classList.remove("noData")
       description.style.width = ""
       description.style.marginTop = ""
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
@@ -109,22 +107,17 @@ async function build() {
 }
 
 // Animation load
-setTimeout(() => {
-  if(window.innerWidth < 350) {
-    title.innerHTML = "Docs"
-  }
+if(window.innerWidth < 350) title.innerHTML = "Docs"
+window.onresize = () => {
+  if(window.innerWidth < 350) title.innerHTML = "Docs"
+  else title.innerHTML = "Documentation"
+}
 
+setTimeout(() => {
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
-  if(window.innerHeight < 735 && window.innerWidth > 700) {
-    loading.style.animation = "loadingWithoutFly 2s infinite"
-    if(window.innerHeight < 635) {
-      loading.style.height = "90px"
-      loading.style.lineHeight = "90px"
-    }
-  }
-  else loading.style.animation = "loading 2s infinite"
+  loading.style.animation = "loading 2s infinite"
   build()
 }, 300);
 
