@@ -402,7 +402,7 @@ iframe[seamless] {
     margin-right: 0px;
   }
   .about .mainCol {
-    border-top: 3px solid;
+    border-top: 6px solid;
     margin-top: 30px;
     padding-top: 30px;
   }
@@ -484,7 +484,7 @@ iframe[seamless] {
   font-weight: bold;
   cursor: pointer;
   color: red;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
   transition: 0.2s;
 }
 .docs #menu ul:hover {
@@ -591,10 +591,11 @@ iframe[seamless] {
     font-size: 25px;
   }
   .docs #menu ul:last-child {
-    border-bottom: 4px solid;
+    border-bottom: 6px solid;
     border-image-source: linear-gradient(to right, rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8), rgb(26, 25, 25), rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8));
     border-image-slice: 1;
     padding-bottom: 30px;
+    margin-bottom: 0px;
   }
   .docs #menu ul li {
     font-size: 20px;
