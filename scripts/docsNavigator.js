@@ -22,7 +22,7 @@ async function build() {
 
     // Menu builder
     let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
-    docsVersion.innerHTML = '<i class="i fa-solid fa-code-compare"></i> v' + modules[0].version
+    docsVersion.innerHTML = '<i class="i fa-solid fa-code-compare"></i> Build ' + modules[0].version
 
     for (let k = 1; k < modules.length; k++) {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
@@ -110,6 +110,10 @@ async function build() {
 
 // Animation load
 setTimeout(() => {
+  if(window.innerWidth < 350) {
+    title.innerHTML = "Docs"
+  }
+
   loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
   var emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
