@@ -1,9 +1,14 @@
 // Check version number
 async function versionNum() {
   var versionNum = document.getElementById("version")
-  let versionNumLink = "https://raw.githubusercontent.com/Bicycle-LEDs/Bicycle-LEDs.github.io/main/version.txt"
-  let number = await fetch(versionNumLink)
-  if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ' v' + await number.text()
+  let versionNumLink = "../version.txt"
+  try {
+    let number = await fetch(versionNumLink)
+    if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ' v' + await number.text()
+  }
+  catch (error) {
+    versionNum.innerHTML = versionNum.innerHTML + ' Testing env'
+  }
 }
 versionNum()
 
