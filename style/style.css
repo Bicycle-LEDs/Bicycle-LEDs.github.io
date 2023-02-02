@@ -92,7 +92,7 @@ nav .fa-regular {
 }
 .nav-links ul li {
   display: inline-block;
-  padding: 8px 12px;
+  padding: 10px 12px 4px;
   position: relative;
 }
 .nav-links ul li .here::after {
@@ -289,7 +289,7 @@ iframe[seamless] {
 --------------------------------------------------------
 */
 
-.sub-header {
+.about-header {
   height: 400px;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(../images/galaxy.jpg);
@@ -297,9 +297,8 @@ iframe[seamless] {
   background-size: cover;
   text-align: center;
   color: #fff;
-  display: block;
 }
-.sub-header h3 {
+.about-header h3 {
   margin-top: 80px;
   font-size: 40px;
 }
@@ -321,7 +320,7 @@ iframe[seamless] {
   color: #fff;
   float:left;
   margin-top: 30px;
-  width: calc(50% - 10px);
+  width: calc(50% - 20px);
   min-height: 80px;
   text-align: left;
 }
@@ -370,18 +369,18 @@ iframe[seamless] {
   clear: both;
 }
 .about .row .col:last-child {
-  padding-left: 10px;
-  margin-left: 10px;
+  padding-left: 20px;
+  margin-left: 20px;
   border-left: 3px solid;
   border-image-source: linear-gradient(rgb(26, 25, 25), rgba(38, 155, 22, 0.8), rgb(26, 25, 25));
   border-image-slice: 1;
 }
 
 @media(max-width: 700px) {
-  .sub-header {
+  .about-header {
     height: 250px;
   }
-  .sub-header h3 {
+  .about-header h3 {
     margin-top: 50px;
   }
 
@@ -429,6 +428,48 @@ iframe[seamless] {
     padding-bottom: 0px;
     margin-bottom: 0px;
     border-bottom: none;
+  }
+}
+
+/* 
+--------------------------------------------------------
+---------------------- REPOS PAGE ----------------------
+--------------------------------------------------------
+*/
+
+.repos-header {
+  height: 400px;
+  width: 100%;
+  background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(../images/cosmos.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+.repos-header h3 {
+  margin-top: 80px;
+  font-size: 40px;
+}
+
+.repos {
+  min-height: calc(100vh - 400px - 150px);
+  width: 100%;
+  background: rgb(26, 25, 25);
+  margin: auto;
+  padding: 20px;
+  display: none;
+}
+
+
+@media(max-width: 700px) {
+  .repos-header {
+    height: 250px;
+  }
+  .repos-header h3 {
+    margin-top: 50px;
+  }
+  .repos {
+    min-height: calc(100vh - 250px - 150px);
   }
 }
 
@@ -570,9 +611,6 @@ iframe[seamless] {
 }
 
 @media(max-width: 700px) {
-  .docs {
-    min-height: calc(100vh - 250px - 150px);
-  }
   .docs-header {
     height: 250px;
   }
@@ -580,6 +618,9 @@ iframe[seamless] {
     margin-top: 50px;
   }
 
+  .docs {
+    min-height: calc(100vh - 250px - 150px);
+  }
   .docs .col {
     width: 100%;
   }

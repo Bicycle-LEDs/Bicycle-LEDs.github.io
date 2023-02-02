@@ -11,8 +11,9 @@ versionNum()
 var globalAnnouncment = ''
 
 var mainAnnouncment = '',
-    aboutAnnouncment = '<i class="fa-solid fa-wrench"></i> Work in progress',
-    docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Work in progress'
+    aboutAnnouncment = '<i class="fa-solid fa-wrench"></i> Not finished',
+    reposAnnouncment = '<i class="fa-solid fa-screwdriver-wrench"></i> Work in progress'
+    docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Database not ready'
 
 // Check what's name of page and fetch html element
 var fileName = location.href.split("/").slice(-1), text;
@@ -21,6 +22,7 @@ var announcment = document.getElementById("announcment")
 // Create text depending on filename
 if(fileName[0] == 'docs.html') text = docsAnnouncment
 else if (fileName[0] == 'about.html') text = aboutAnnouncment
+else if (fileName[0] == 'repos.html') text = reposAnnouncment
 else if (fileName[0] == 'index.html') text = mainAnnouncment
 text ? (globalAnnouncment ? text = text + '<br />' + globalAnnouncment : text = text) : (globalAnnouncment ? text = globalAnnouncment : text = '')
 announcment.innerHTML =  text
@@ -36,5 +38,5 @@ function hideMenu() {
 
 // On click reload
 function reload() {
-  window.location = window.location.href + "?eraseCache=true"
+  window.location = window.location
 }
