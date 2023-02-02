@@ -34,20 +34,27 @@ async function build() {
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
       if(!moduleJson.disabled) {
         // If no submenu selected, highlight menu
-        if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" class="selected" id="' + modules[k].name + '">' + modules[k].name
+        if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(-1)" class="selected" id="' + modules[k].name + '">' + modules[k].name
         else menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
         let moduleMenu = document.getElementById(modules[k].name)
   
         for (let i = 0; i < moduleJson.components.length; i++) {
           // If submenu selected, highlight it
           if(moduleJson.components[i].disabled) return
-          if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML  + '<li class="selected" onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
+          if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML  + '<li class="selected" onclick="subDoc(-1)">' + moduleJson.components[i].menuname + "</li>"
           else moduleMenu.innerHTML = moduleMenu.innerHTML + '<li onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
         }
 
         menu.innerHTML = menu.innerHTML + "</ul>"
       }
     }
+
+    // Clear
+    description.classList.remove("noData")
+    description.style.width = ''
+    description.style.marginTop = ''
+    description.innerHTML = ''
+    image.innerHTML = ''
 
     // If just loaded page
     if(selectedMenu == -1) {
@@ -56,13 +63,6 @@ async function build() {
       document.getElementById("err").style.animation = "loadingError 5s infinite"
     }
     else {
-
-      // Clear
-      description.classList.remove("noData")
-      description.style.width = ''
-      description.style.marginTop = ''
-      description.innerHTML = ''
-      image.innerHTML = ''
 
       // Description builder
       let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
