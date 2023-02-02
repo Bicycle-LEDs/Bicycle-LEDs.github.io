@@ -54,12 +54,13 @@ var anims = [
   { a: "solid", b: "gear" },
   { a: "solid", b: "compact-disc" }
 ]
+var lastAnim, anim
 function changeAnim() {
-  let anim = anims[Math.floor(Math.random()*anims.length)]
-
+  while(lastAnim == anim) anim = anims[Math.floor(Math.random()*anims.length)];
   let loading = document.getElementById("loading")
   loading.innerHTML = `<i class="fa-${anim.a} fa-${anim.b}" id="emojiInLoading"></i> Loading`
   let emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
   loading.style.animation = "loading 2s infinite"
+  lastAnim = anim
 }
