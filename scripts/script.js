@@ -45,3 +45,21 @@ function hideMenu() {
 function reload() {
   window.location = window.location
 }
+
+// Change anim style
+var anims = [
+  { a: "solid", b: "sync" },
+  { a: "solid", b: "circle-notch" },
+  { a: "solid", b: "spinner" },
+  { a: "solid", b: "gear" },
+  { a: "solid", b: "compact-disc" }
+]
+function changeAnim() {
+  let anim = anims[Math.floor(Math.random()*anims.length)]
+
+  let loading = document.getElementById("loading")
+  loading.innerHTML = `<i class="fa-${anim.a} fa-${anim.b}" id="emojiInLoading"></i> Loading`
+  let emojiInLoading = document.getElementById("emojiInLoading")
+  emojiInLoading.style.animation = "spinner 0.5s infinite"
+  loading.style.animation = "loading 2s infinite"
+}

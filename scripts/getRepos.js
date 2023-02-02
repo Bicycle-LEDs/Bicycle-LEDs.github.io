@@ -45,9 +45,6 @@ window.onresize = () => {
 
 // Load animation, from there to provide synchronous movement
 setTimeout(() => {
-  loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
-  var emojiInLoading = document.getElementById("emojiInLoading")
-  emojiInLoading.style.animation = "spinner 0.5s infinite"
-  loading.style.animation = "loading 2s infinite"
+  changeAnim()
   build()
 }, 300);

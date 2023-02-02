@@ -7,18 +7,17 @@ var main = document.getElementById("mainSection")
 var title = document.getElementById("title")
 var docsVersion = document.getElementById("docsVersion")
 
-
 // Some temp values
 var docsVersionTemp
 var selectedMenu = -1
 var selectedSubMenu = -1
 var subClicked = false
 
-
 // Main function
 async function build() {
 
   // Hide docs, show loading
+  changeAnim()
   loading.style.display = "block"
   main.style.display = "none"
 
@@ -149,10 +148,6 @@ window.onresize = () => {
 
 // Load animation, from there to provide synchronous movement
 setTimeout(() => {
-  loading.innerHTML = '<i class="fa-solid fa-spinner" id="emojiInLoading"></i> Loading'
-  var emojiInLoading = document.getElementById("emojiInLoading")
-  emojiInLoading.style.animation = "spinner 0.5s infinite"
-  loading.style.animation = "loading 2s infinite"
   build()
 }, 300);
 
