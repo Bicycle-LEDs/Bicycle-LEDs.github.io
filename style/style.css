@@ -85,6 +85,10 @@ nav .fa-regular {
   color: yellow;
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05), #f443369f, rgba(255, 255, 255, 0.05));
 }
+
+.nav-links .disabled {
+  cursor: not-allowed;
+}
 .nav-links a {
   color: #fff;
   text-decoration: none;
@@ -153,6 +157,13 @@ iframe[seamless] {
   }
   .announcment {
     font-size: 20px;
+  }
+
+  .nav-links .disabled {
+    text-decoration: line-through;
+  }
+  .nav-links .disabled:hover {
+    color: unset;
   }
   .nav-links ul li {
     display: block;
@@ -323,7 +334,7 @@ iframe[seamless] {
 .about .col {
   color: #fff;
   float:left;
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: calc(50% - 20px);
   min-height: 80px;
   text-align: left;
@@ -347,7 +358,7 @@ iframe[seamless] {
 }
 .about .mainCol {
   color: #fff;
-  margin-top: 80px;
+  margin-top: 50px;
   padding-top: 50px;
   border-top: 6px solid;
   border-image-source: linear-gradient(to right, rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8), rgb(26, 25, 25),  rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8));
@@ -386,6 +397,10 @@ iframe[seamless] {
   }
   .about-header h3 {
     margin-top: 50px;
+  }
+  .about {
+    min-height: calc(100vh - 250px - 150px);
+    padding: 10px;
   }
 
   .about .col {
@@ -512,6 +527,7 @@ iframe[seamless] {
   }
   .repos {
     min-height: calc(100vh - 250px - 150px);
+    padding: 5px;
   }
   .repos .box {
     width: calc(50% - 8px);
@@ -675,6 +691,7 @@ iframe[seamless] {
 
   .docs {
     min-height: calc(100vh - 250px - 150px);
+    padding: 10px;
   }
   .docs .col {
     width: 100%;
