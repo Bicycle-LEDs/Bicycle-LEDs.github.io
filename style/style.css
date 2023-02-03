@@ -420,9 +420,10 @@ iframe[seamless] {
     margin-right: 0px;
   }
   .about .mainCol {
-    border-top: 6px solid;
+    border-top: 4px solid;
     margin-top: 30px;
     padding-top: 30px;
+    margin-bottom: 10px;
   }
   .about .mainCol h2 {
     font-size: 25px;
@@ -608,7 +609,7 @@ iframe[seamless] {
   color: white;
   text-align: left;
   border: 2px solid;
-  border-right: 3px solid;
+  border-left: 4px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, rgb(26, 25, 25), rgba(83, 18, 14, 0.8));
   padding-left: 5px;
@@ -692,8 +693,9 @@ iframe[seamless] {
   .docs {
     min-height: calc(100vh - 250px - 150px);
     padding: 10px;
+    padding-bottom: 20px;
   }
-  .docs .col {
+  .docs .col {  
     width: 100%;
   }
   .docs #menu {
@@ -704,7 +706,7 @@ iframe[seamless] {
     font-size: 25px;
   }
   .docs #menu ul:last-child {
-    border-bottom: 6px solid;
+    border-bottom: 3px solid;
     border-image-source: linear-gradient(to right, rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8), rgb(26, 25, 25), rgba(155, 146, 22, 0.8), rgba(155, 146, 22, 0.8));
     border-image-slice: 1;
     padding-bottom: 30px;
@@ -714,6 +716,7 @@ iframe[seamless] {
     font-size: 20px;
     text-align: center;
     border-image-source: linear-gradient(to right, rgb(26, 25, 25), rgba(83, 18, 14, 0.8),  rgb(26, 25, 25), rgba(83, 18, 14, 0.8), rgb(26, 25, 25));
+    border-left: unset;
     padding-left: 0px;
   }
   .docs #menu ul li:first-child {
@@ -723,7 +726,7 @@ iframe[seamless] {
     border-bottom: 4px solid;
   }
   .docs #description h1 {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 30px;
     line-height: 31px;
     text-align: center;
