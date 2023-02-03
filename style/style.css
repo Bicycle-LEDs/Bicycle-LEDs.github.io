@@ -95,6 +95,9 @@ nav .fa-regular {
   padding: 10px 12px 4px;
   position: relative;
 }
+.nav-links ul li .here {
+  cursor: pointer;
+}
 .nav-links ul li .here::after {
   content: '';
   height: 2px;
@@ -238,7 +241,7 @@ iframe[seamless] {
   font-size: 62px;
 }
 .text-box p {
-  margin: 10px auto 15px;
+  margin: 2px auto 15px;
   font-size: 18px;
 }
 .text-box img {
@@ -258,7 +261,7 @@ iframe[seamless] {
   transition: 0.5s;
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .organ-btn:hover {
   border: 3px solid #f44336;
@@ -460,8 +463,46 @@ iframe[seamless] {
   padding: 20px;
   display: none;
 }
+.repos .grid::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.repos a {
+  text-decoration: none;
+}
+.repos .box {
+  width: calc(33.3333% - 20px);
+  margin: 0% 10px 20px 10px;
+  padding: 20px;
+  float: left;
+  border: lightblue 5px solid;
+  border-radius: 30px;
+}
+.repos .box .p {
+  font-size: 20px;
+  color: green;
+  position: relative;
+  top:-3px;
+}
+.repos .box h1 {
+  font-size: 25px;
+  color: yellow;
+}
 
-
+@media(max-width: 1132px) {
+  .repos .box {
+    width: calc(50% - 20px);
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
+@media(max-width: 896px) {
+  .repos .box .p {
+    display: block;
+    top: 0px;
+  }
+}
 @media(max-width: 700px) {
   .repos-header {
     height: 250px;
@@ -471,6 +512,12 @@ iframe[seamless] {
   }
   .repos {
     min-height: calc(100vh - 250px - 150px);
+  }
+  .repos .box .p {
+    font-size: 15px;
+  }
+  .repos .box h1 {
+    font-size: 20px;
   }
 }
 

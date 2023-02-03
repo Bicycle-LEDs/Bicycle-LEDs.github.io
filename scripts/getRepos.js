@@ -1,6 +1,7 @@
 // Get document elements
 var loading = document.getElementById("loading")
 var main = document.getElementById("mainSection")
+var grid = document.getElementById("grid")
 var title = document.getElementById("title")
 
 async function build() {
@@ -13,6 +14,18 @@ async function build() {
 
     // Get repos list
     let repos = await fetch('https://api.github.com/users/Bicycle-Leds/repos').then(res => res.json())
+
+    for(let i = 0; i < repos.length; i++) {
+
+      if(repos[i].name.includes(".github.io")) repos[i].name = "website"
+      grid.innerHTML = grid.innerHTML + `
+      <a href="${repos[i].html_url}" target="_blank"><div class="box">
+
+        <h1><span class="p">Bicycle-LEDs/ </span>${repos[i].name}</h1>
+
+      </div></a>`
+
+    }
 
     // Show page again, hide loading
     setTimeout(() => {
