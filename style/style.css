@@ -472,8 +472,8 @@ iframe[seamless] {
   text-decoration: none;
 }
 .repos .box {
-  width: calc(33.3333% - 20px);
-  margin: 0% 10px 20px 10px;
+  width: calc(33.3333% - 16px);
+  margin: 0% 8px 15px 8px;
   padding: 20px;
   float: left;
   border: lightblue 5px solid;
@@ -492,7 +492,7 @@ iframe[seamless] {
 
 @media(max-width: 1132px) {
   .repos .box {
-    width: calc(50% - 20px);
+    width: calc(50% - 16px);
     padding: 10px;
     border-radius: 15px;
   }
@@ -512,6 +512,10 @@ iframe[seamless] {
   }
   .repos {
     min-height: calc(100vh - 250px - 150px);
+  }
+  .repos .box {
+    width: calc(50% - 8px);
+    margin: 0% 4px 10px 4px;
   }
   .repos .box .p {
     font-size: 15px;
