@@ -51,6 +51,7 @@ async function build() {
 
     // Clear
     description.classList.remove("noData")
+    image.style.display = ''
     description.style.width = ''
     description.style.marginTop = ''
     description.innerHTML = ''
@@ -58,6 +59,7 @@ async function build() {
 
     // If just loaded page
     if(selectedMenu == -1) {
+      image.style.display = 'none'
       description.classList.add("noData")
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
       document.getElementById("err").style.animation = "loadingError 5s infinite"

@@ -637,9 +637,12 @@ iframe[seamless] {
 }
 .docs #image {
   text-align: center;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
 }
 .docs #image h1 {
-  margin-top: 30%;
+  margin: 0 auto;
   font-size: 22px;
   font-weight: normal;
   color: rgb(255, 255, 255);
@@ -717,6 +720,9 @@ iframe[seamless] {
   .docs .noData {
     width: 100%;
     line-height: auto;
+  }
+  .docs #image {
+    min-height: unset;
   }
   .docs #image h1 {
     margin-top: 10px;

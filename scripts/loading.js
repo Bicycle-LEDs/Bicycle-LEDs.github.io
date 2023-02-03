@@ -19,5 +19,5 @@ window.onload = function() {
   setTimeout(() => {
     loading.style.display = "none"
     main.style.display = "block"
-  }, 1000);
+  }, 600);
 }
