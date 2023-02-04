@@ -399,7 +399,7 @@ iframe[seamless] {
     margin-top: 50px;
   }
   .about {
-    min-height: calc(100vh - 250px - 150px);
+    min-height: calc(100vh - 250px - 100px);
     padding: 10px;
   }
 
@@ -553,7 +553,7 @@ iframe[seamless] {
     margin-top: 50px;
   }
   .repos {
-    min-height: calc(100vh - 250px - 150px);
+    min-height: calc(100vh - 250px - 100px);
     padding: 5px;
   }
   .repos .branch {
@@ -711,7 +711,7 @@ iframe[seamless] {
   }
 
   .docs {
-    min-height: calc(100vh - 250px - 150px);
+    min-height: calc(100vh - 250px - 100px);
     padding: 10px;
     padding-bottom: 20px;
   }
