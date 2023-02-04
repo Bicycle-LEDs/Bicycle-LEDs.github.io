@@ -21,7 +21,13 @@ async function build() {
       grid.innerHTML = grid.innerHTML + `
       <a href="${repos[i].html_url}" target="_blank"><div class="box">
 
+        <p class="branch"><i class="fa-solid fa-code-branch"></i> ${repos[i].default_branch}</p>
+
         <h1><span class="p">Bicycle-LEDs/ </span>${repos[i].name}</h1>
+
+        <h2>${repos[i].description}</h2>
+
+        <p class="issues"><i class="fa-solid fa-circle-info"></i> ${repos[i].open_issues}</p>
 
       </div></a>`
 
