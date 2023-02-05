@@ -1,6 +1,6 @@
 // Get document elements
-var loading = document.getElementById("loading")
-var main = document.getElementById("mainSection")
+const loading = document.getElementById("loading")
+const main = document.getElementById("mainSection")
 
 // Change animation style if it's main page
 if(loading.classList.contains("mainPageLoading")) {

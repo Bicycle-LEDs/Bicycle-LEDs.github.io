@@ -27,16 +27,16 @@ async function build() {
     menu.innerHTML = ''
 
     // Menu builder
-    let modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
+    const modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
     docsVersionTemp = '<i class="i fa-solid fa-code-compare"></i> Build ' + modules[0].version
 
     for (let k = 1; k < modules.length; k++) {
-      let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
+      const moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
       if(!moduleJson.disabled) {
         // If no submenu selected, highlight menu
         if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(-1)" class="selected" id="' + modules[k].name + '">' + modules[k].name
         else menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
-        let moduleMenu = document.getElementById(modules[k].name)
+        const moduleMenu = document.getElementById(modules[k].name)
   
         for (let i = 0; i < moduleJson.components.length; i++) {
           // If submenu selected, highlight it
@@ -67,7 +67,7 @@ async function build() {
     else {
 
       // Description builder
-      let moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
+      const moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
 
       // No submenu selected
       if(selectedSubMenu != -1) {
@@ -91,7 +91,7 @@ async function build() {
 
         // Image
         for (let i = 0; i < moduleJson.components[selectedSubMenu].pictures.length; i++) {
-          let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i], { method: 'HEAD' })
+          const checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i], { method: 'HEAD' })
           if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i] + '">'
           else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
         }
@@ -116,7 +116,7 @@ async function build() {
   
         // Image
         for (let i = 0; i < moduleJson.pictures.length; i++) {
-          let checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i], { method: 'HEAD' })
+          const checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i], { method: 'HEAD' })
           if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i] + '">'
           else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
         }

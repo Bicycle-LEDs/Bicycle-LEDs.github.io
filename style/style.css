@@ -329,6 +329,13 @@ iframe[seamless] {
   min-height: 80px;
   text-align: left;
 }
+.about .col .av {
+  width: 40px;
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
 .about .col h2 {
   font-size: 35px;
 }
@@ -338,13 +345,6 @@ iframe[seamless] {
 .about .col img {
   width: 100%;
   border-radius: 15px;
-}
-.about .col .av {
-  width: 40px;
-  float: left;
-  margin-top: 5px;
-  margin-right: 10px;
-  border-radius: 50%;
 }
 .about .mainCol {
   color: #fff;
@@ -468,7 +468,6 @@ iframe[seamless] {
   margin: auto;
   padding: 20px;
   display: none;
-  height: 100%;
 }
 .repos .grid::after {
   content: "";
@@ -494,18 +493,17 @@ iframe[seamless] {
 }
 .repos .info .p {
   font-size: 20px;
-  color: green;
+  color: rgb(9, 165, 9);
   position: relative;
-  top: -3px;
 }
 .repos .info h1 {
   font-size: 25px;
+  line-height: 20px;
   color: yellow;
   display: inline-block;
 }
 .repos .info h2 {
   font-size: 20px;
-  margin-top: -5px;
   color: white;
 }
 .repos .info .issues {
@@ -517,7 +515,7 @@ iframe[seamless] {
   float: left;
   margin-left: 10px;
   font-size: 20px;
-  width: 152px;
+  width: 157px;
   cursor: pointer;
 }
 
@@ -528,18 +526,45 @@ iframe[seamless] {
   color: yellow;
 }
 
-.repos .branch-info {
-  display: flex;
-  margin-left: 10px;
-  width: calc(100% - 30% - 152px - 20px);
+.repos .loading {
+  visibility: hidden;
   float: left;
-  align-items: center;
-  justify-content: center;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  left: calc(30% + 10px + 157px + 20px);
+  font-size: 40px;
+  color: white;
 }
 
-.repos .branch-info .loading {
+.repos .branch-info {
+  position: relative;
+  float: left;
+  text-align: left;
+  margin-left: 70px;
+  width: calc(100% - 30% - 157px - 80px);
+}
+
+.repos .branch-info .av {
+  margin-top: 7px;
+  margin-right: 10px;
+  width: 40px;
+  float: left;
+  border-radius: 50%;
+}
+.repos .branch-info .commInfo {
+  top: -5px;
+  font-size: 15px;
+  color: white;
+}
+.repos .branch-info .commSha {
+  color: brown;
+}
+.repos .branch-info h1 {
+  margin-top: -25px;
   font-size: 20px;
   color: white;
+  font-weight: normal;
 }
 
 .repos .repoBtn {
@@ -577,6 +602,19 @@ iframe[seamless] {
   .repos .branch-info {
     display: none;
   }
+  .repos .repoBtn {
+    position: absolute;
+    rotate: 90deg;
+    transform: none;
+    padding: 0;
+    right: 15px;
+    top: calc(100% - 42px);
+  }
+  .repos .repoBtn:hover {
+    font-size: 30px;
+    padding-right: 0;
+  }
+  
 }
 
 /* 

@@ -1,9 +1,8 @@
 // Check version number
 async function versionNum() {
   var versionNum = document.getElementById("version")
-  let versionNumLink = "../version.txt"
   try {
-    let number = await fetch(versionNumLink)
+    const number = await fetch("../version.txt")
     if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ' v' + await number.text()
   }
   catch (error) {
@@ -13,16 +12,17 @@ async function versionNum() {
 versionNum()
 
 // Here paste announcments
-var globalAnnouncment = ''
+const globalAnnouncment = ''
 
-var mainAnnouncment = '',
+const mainAnnouncment = '',
     aboutAnnouncment = '<i class="fa-solid fa-wrench"></i> Not finished',
     reposAnnouncment = '<i class="fa-solid fa-screwdriver-wrench"></i> Work in progress'
     docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Database not ready'
 
 // Check what's name of page and fetch html element
-var fileName = location.href.split("/").slice(-1), text;
-var announcment = document.getElementById("announcment")
+const fileName = location.href.split("/").slice(-1); 
+const announcment = document.getElementById("announcment")
+let text;
 
 // Create text depending on filename
 if(fileName[0] == 'docs.html') text = docsAnnouncment
@@ -33,7 +33,7 @@ text ? (globalAnnouncment ? text = text + '<br />' + globalAnnouncment : text = 
 announcment.innerHTML =  text
 
 // Navigator, on show show, on hide hide
-var navLinks = document.getElementById("navLinks")
+const navLinks = document.getElementById("navLinks")
 function showMenu() {
   navLinks.style.right = "0"
 }
@@ -47,19 +47,19 @@ function reload() {
 }
 
 // Change anim style
-var anims = [
+const anims = [
   { a: "solid", b: "sync" },
   { a: "solid", b: "circle-notch" },
   { a: "solid", b: "spinner" },
   { a: "solid", b: "gear" },
   { a: "solid", b: "compact-disc" }
 ]
-var lastAnim, anim
+let lastAnim, anim
 function changeAnim() {
   while(lastAnim == anim) anim = anims[Math.floor(Math.random()*anims.length)];
-  let loading = document.getElementById("loading")
+  const loading = document.getElementById("loading")
   loading.innerHTML = `<i class="fa-${anim.a} fa-${anim.b}" id="emojiInLoading"></i> Loading`
-  let emojiInLoading = document.getElementById("emojiInLoading")
+  const emojiInLoading = document.getElementById("emojiInLoading")
   emojiInLoading.style.animation = "spinner 0.5s infinite"
   loading.style.animation = "loading 2s infinite"
   lastAnim = anim
