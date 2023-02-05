@@ -20,26 +20,35 @@ async function build() {
       if(repos[i].name.includes(".github.io")) repos[i].name = "website"
       grid.innerHTML = grid.innerHTML + `
       <div class="box">
-        <h1><span class="p">Bicycle-LEDs/ </span>${repos[i].name}</h1>
-  
-        <p class="branch"><i class="fa-solid fa-code-branch"></i> ${repos[i].default_branch}</p>
+        <div class="info">
+          <h1><span class="p">Bicycle-LEDs/</span>${repos[i].name}</h1>
+    
+          <h2>${repos[i].description}</h2>
 
-        <h2>${repos[i].description}</h2>
+          <p class="issues"><i class="fa-solid fa-circle-info"></i> Open issues: ${repos[i].open_issues}</p>
+        </div>
+        
+        <div class="branch-ctrl" id="branches-${i}"> </div>
 
-        <p class="issues"><i class="fa-solid fa-circle-info"></i> Open issues: ${repos[i].open_issues}</p>
+        <div class="branch-info" id="branchInfo-${i}"> </div>
 
         <a href="${repos[i].html_url}" target="_blank"><i class="repoBtn fa-solid fa-chevron-right"></i></a>
       </div>`
 
+      // Get branches list
+      let branches = await fetch(repos[i].branches_url.replace('{/branch}', '')).then(res => res.json())
+      let branchesHtml = document.getElementById(`branches-${i}`)
+
+      for (let k = branches.length - 1; k >= 0; k--) {
+        if(branches[k].name == repos[i].default_branch) branchesHtml.innerHTML = branchesHtml.innerHTML + `<p class="active-branch" id="branch-${i}${k}" onclick="changeBranch(${i}, ${k})"><i class="fa-solid fa-code-branch"></i>${branches[k].name}</p>`
+        else branchesHtml.innerHTML = branchesHtml.innerHTML + `<p class="branch" id="branch-${i}${k}" onclick="changeBranch(${i}, ${k})"><i class="fa-solid fa-code-branch"></i>${branches[k].name}</p>`
+      }
     }
 
     // Show page again, hide loading
     setTimeout(() => {
       loading.style.display = "none"
       main.style.display = "block"
-
-      // Temp
-      title.style.animation = "loadingError 5s infinite"
     }, 600);
 
   }
@@ -52,7 +61,39 @@ async function build() {
     main.style.display = "block"
     console.error("Error occured: \n" + error)
   }
+}
 
+async function changeBranch(repoNum, branchNum) {
+
+  try {
+    
+    let branchInfoHtml = document.getElementById(`branchInfo-${repoNum}`)
+    branchInfoHtml.innerHTML = '<p class="loading"><i class="fa-brands fa-github fa-flip"></i> Loading</p>'
+
+    // Remove active class from this branch
+    let branchesCount = document.getElementById(`branches-${repoNum}`).childElementCount
+    for (let h = 0; h < branchesCount; h++) {
+      document.getElementById(`branch-${repoNum}${h}`).classList.remove('active-branch')
+      document.getElementById(`branch-${repoNum}${h}`).classList.add('branch')
+    }
+
+    // Get branch info
+    let repos = await fetch('https://api.github.com/users/Bicycle-Leds/repos').then(res => res.json())
+    let repo = repos[repoNum]
+    let branches = await fetch(repo.branches_url.replace('{/branch}', '')).then(res => res.json())
+    let branchInfo = branches[branchNum]
+
+    let branchHtml = document.getElementById(`branch-${repoNum}${branchNum}`)
+
+    branchHtml.classList.add("active-branch")
+    branchHtml.classList.remove("branch")
+
+  }
+
+  catch (error) {
+    title.style.animation = "loadingError 5s infinite"
+    console.error("Error occured: \n" + error)
+  }
 }
 
 // Change title depending on screen width

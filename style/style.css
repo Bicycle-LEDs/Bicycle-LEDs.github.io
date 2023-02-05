@@ -478,6 +478,7 @@ iframe[seamless] {
   margin: auto;
   padding: 20px;
   display: none;
+  height: 100%;
 }
 .repos .grid::after {
   content: "";
@@ -490,39 +491,68 @@ iframe[seamless] {
 .repos .box {
   width: 100%;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 13px 50px 15px 20px;
   float: left;
   border: lightblue 5px solid;
   border-radius: 30px;
-  position: relative
+  position: relative;
 }
-.repos .box .p {
+
+.repos .info {
+  float: left;
+  width: 30%;
+}
+.repos .info .p {
   font-size: 20px;
   color: green;
   position: relative;
-  top:-3px;
+  top: -3px;
 }
-.repos .box h1 {
+.repos .info h1 {
   font-size: 25px;
   color: yellow;
   display: inline-block;
 }
-.repos .branch {
-  color: brown;
-  display: inline-block;
-  position: relative;
-  top: -5px;
-  margin-left: 5px;
-}
-.repos .box h2 {
+.repos .info h2 {
   font-size: 20px;
   margin-top: -5px;
   color: white;
 }
-.repos .issues {
+.repos .info .issues {
   font-size: 15px;
   color: cornflowerblue;
 }
+
+.repos .branch-ctrl {
+  float: left;
+  margin-left: 10px;
+  font-size: 20px;
+  width: 152px;
+  cursor: pointer;
+}
+
+.repos .branch-ctrl .branch {
+  color: white
+}
+.repos .branch-ctrl .active-branch {
+  color: yellow;
+}
+
+.repos .branch-info {
+  display: flex;
+  margin-left: 10px;
+  width: calc(100% - 30% - 152px - 20px);
+  float: left;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.repos .branch-info .loading {
+  font-size: 20px;
+  color: white;
+}
+
 .repos .repoBtn {
   position: absolute;
   right: 0;
@@ -530,39 +560,14 @@ iframe[seamless] {
   transform: translateY(-50%);
   font-size: 30px;
   color: lightblue;
-  padding-right: 20px;
-  transition: 0.3s;
+  padding: 20px;
+  transition: 0.2s;
 }
 .repos .repoBtn:hover {
   font-size: 40px;
   padding-right: 30px;
 }
 
-@media(max-width: 1200px) {
-  .repos .box {
-    width: calc(50% - 8px);
-    margin: 0% 4px 10px 4px;
-    padding: 10px;
-    border-radius: 15px;
-  }
-  .repos .branch {
-    font-size: 13px;
-  }
-  .repos .box .p {
-    display: block;
-    top: 0px;
-    font-size: 15px;
-  }
-  .repos .box h1 {
-    font-size: 20px;
-  }
-  .repos .box h2 {
-    font-size: 15px;
-  }
-  .repos .issues {
-    font-size: 10px;
-  }
-}
 @media(max-width: 700px) {
   .repos-header {
     height: 250px;
@@ -574,9 +579,11 @@ iframe[seamless] {
     min-height: calc(100vh - 250px - 100px);
     padding: 5px;
   }
-  .repos .branch {
-    float: unset;
-    text-align: right;
+  .repos .info {
+    width: 100%;
+  }
+  .repos .branch-ctrl {
+    display: none;
   }
 }
 
