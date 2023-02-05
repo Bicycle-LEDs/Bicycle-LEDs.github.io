@@ -89,6 +89,7 @@ nav .fa-regular {
 .nav-links .disabled {
   cursor: not-allowed;
 }
+
 .nav-links a {
   color: #fff;
   text-decoration: none;
@@ -165,6 +166,7 @@ iframe[seamless] {
   .nav-links .disabled:hover {
     color: unset;
   }
+
   .nav-links ul li {
     display: block;
     background-image: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5));
