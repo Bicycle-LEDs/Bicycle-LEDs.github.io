@@ -545,7 +545,6 @@ iframe[seamless] {
   float: left;
   align-items: center;
   justify-content: center;
-
 }
 
 .repos .branch-info .loading {
@@ -583,6 +582,9 @@ iframe[seamless] {
     width: 100%;
   }
   .repos .branch-ctrl {
+    display: none;
+  }
+  .repos .branch-info {
     display: none;
   }
 }
