@@ -19,17 +19,17 @@ async function build() {
 
       if(repos[i].name.includes(".github.io")) repos[i].name = "website"
       grid.innerHTML = grid.innerHTML + `
-      <a href="${repos[i].html_url}" target="_blank"><div class="box">
-
-        <p class="branch"><i class="fa-solid fa-code-branch"></i> ${repos[i].default_branch}</p>
-
+      <div class="box">
         <h1><span class="p">Bicycle-LEDs/ </span>${repos[i].name}</h1>
+  
+        <p class="branch"><i class="fa-solid fa-code-branch"></i> ${repos[i].default_branch}</p>
 
         <h2>${repos[i].description}</h2>
 
-        <p class="issues"><i class="fa-solid fa-circle-info"></i> ${repos[i].open_issues}</p>
+        <p class="issues"><i class="fa-solid fa-circle-info"></i> Open issues: ${repos[i].open_issues}</p>
 
-      </div></a>`
+        <a href="${repos[i].html_url}" target="_blank"><i class="repoBtn fa-solid fa-chevron-right"></i></a>
+      </div>`
 
     }
 

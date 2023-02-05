@@ -488,16 +488,13 @@ iframe[seamless] {
   text-decoration: none;
 }
 .repos .box {
-  width: calc(33.3333% - 16px);
-  margin: 0% 8px 15px 8px;
+  width: 100%;
+  margin-bottom: 10px;
   padding: 20px;
   float: left;
   border: lightblue 5px solid;
   border-radius: 30px;
-}
-.repos .branch {
-  color: brown;
-  float: right;
+  position: relative
 }
 .repos .box .p {
   font-size: 20px;
@@ -510,14 +507,35 @@ iframe[seamless] {
   color: yellow;
   display: inline-block;
 }
+.repos .branch {
+  color: brown;
+  display: inline-block;
+  position: relative;
+  top: -5px;
+  margin-left: 5px;
+}
 .repos .box h2 {
   font-size: 20px;
+  margin-top: -5px;
   color: white;
 }
 .repos .issues {
   font-size: 15px;
   color: cornflowerblue;
-  text-align: right;
+}
+.repos .repoBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: lightblue;
+  padding-right: 20px;
+  transition: 0.3s;
+}
+.repos .repoBtn:hover {
+  font-size: 40px;
+  padding-right: 30px;
 }
 
 @media(max-width: 1200px) {
