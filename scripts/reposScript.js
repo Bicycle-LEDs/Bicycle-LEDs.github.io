@@ -140,6 +140,8 @@ async function displayMobileSubMenu(repoNum) {
   --- TODO ---
   ------------
   */
+
+  title.style.animation = 'loadingError 5s infinite'
 }
 
 // Change title and button behavior depending on screen width
