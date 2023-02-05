@@ -1,25 +1,25 @@
 // Get document elements
-var menu = document.getElementById("menu")
-var description = document.getElementById("description")
-var image = document.getElementById("image")
-var loading = document.getElementById("loading")
-var main = document.getElementById("mainSection")
-var title = document.getElementById("title")
-var docsVersion = document.getElementById("docsVersion")
+const menu = document.getElementById("menu")
+const description = document.getElementById("description")
+const image = document.getElementById("image")
+const loading = document.getElementById("loading")
+const main = document.getElementById("mainSection")
+const title = document.getElementById("title")
+const docsVersion = document.getElementById("docsVersion")
 
 // Some temp values
-var docsVersionTemp
-var selectedMenu = -1
-var selectedSubMenu = -1
-var subClicked = false
+let docsVersionTemp
+let selectedMenu = -1
+let selectedSubMenu = -1
+let subClicked = false
 
 // Main function
 async function build() {
 
   // Hide docs, show loading
   changeAnim()
-  loading.style.display = "block"
-  main.style.display = "none"
+  loading.style.display = 'block'
+  main.style.display = 'none'
 
   try {
 
@@ -28,24 +28,24 @@ async function build() {
 
     // Menu builder
     const modules = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/modules.json').then(res => res.json())
-    docsVersionTemp = '<i class="i fa-solid fa-code-compare"></i> Build ' + modules[0].version
+    docsVersionTemp = `<i class="i fa-solid fa-code-compare"></i> Build  ${modules[0].version}`
 
     for (let k = 1; k < modules.length; k++) {
-      const moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[k].path + "/main.json").then(res => res.json())
+      const moduleJson = await fetch(`https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[k].path}/main.json`).then(res => res.json())
       if(!moduleJson.disabled) {
         // If no submenu selected, highlight menu
-        if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(-1)" class="selected" id="' + modules[k].name + '">' + modules[k].name
-        else menu.innerHTML = menu.innerHTML + '<ul onclick="mainDoc(' + k + ')" id="' + modules[k].name + '">' + modules[k].name
+        if(selectedSubMenu == -1 && selectedMenu == k) menu.innerHTML = menu.innerHTML + `<ul class="selected" id="${modules[k].name}"> ${modules[k].name}`
+        else menu.innerHTML = menu.innerHTML + `<ul onclick="mainDoc(${k})" id="${modules[k].name}">${modules[k].name}`
         const moduleMenu = document.getElementById(modules[k].name)
   
         for (let i = 0; i < moduleJson.components.length; i++) {
           // If submenu selected, highlight it
           if(moduleJson.components[i].disabled) return
-          if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML  + '<li class="selected" onclick="subDoc(-1)">' + moduleJson.components[i].menuname + "</li>"
-          else moduleMenu.innerHTML = moduleMenu.innerHTML + '<li onclick="subDoc('+ k + ', ' + i + ')">' + moduleJson.components[i].menuname + "</li>"
+          if(selectedMenu == k && selectedSubMenu == i) moduleMenu.innerHTML = moduleMenu.innerHTML  + `<li class="selected" onclick="subDoc(${k}, ${i})" id="subDoc${k}${i}">${moduleJson.components[i].menuname}</li>`
+          else moduleMenu.innerHTML = moduleMenu.innerHTML + `<li onclick="subDoc(${k}, ${i})">${moduleJson.components[i].menuname}</li>`
         }
 
-        menu.innerHTML = menu.innerHTML + "</ul>"
+        menu.innerHTML = menu.innerHTML + '</ul>'
       }
     }
 
@@ -62,21 +62,21 @@ async function build() {
       image.style.display = 'none'
       description.classList.add("noData")
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
-      document.getElementById("err").style.animation = "loadingError 5s infinite"
+      document.getElementById("err").style.animation = 'loadingError 5s infinite'
     }
     else {
 
       // Description builder
-      const moduleJson = await fetch("https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/" + modules[selectedMenu].path + "/main.json").then(res => res.json())
+      const moduleJson = await fetch(`https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[selectedMenu].path}/main.json`).then(res => res.json())
 
       // No submenu selected
       if(selectedSubMenu != -1) {
   
         // Name
-        description.innerHTML = '<h1><i class="i fa-solid fa-atom"></i> ' + moduleJson.components[selectedSubMenu].name + '</h1>'
+        description.innerHTML = `<h1><i class="i fa-solid fa-atom"></i> ${moduleJson.components[selectedSubMenu].name}</h1>`
   
         // Subtitle
-        description.innerHTML = description.innerHTML + '<h2><i class="fa-solid fa-boxes-stacked"></i> Inside ' + modules[selectedMenu].name + '</h2>'
+        description.innerHTML = description.innerHTML + `<h2><i class="fa-solid fa-boxes-stacked"></i> Inside ${modules[selectedMenu].name}</h2>`
   
         // Description
         if(moduleJson.components[selectedSubMenu].description) description.innerHTML = description.innerHTML + '<h3><i class="i fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].description + '</h3>'
@@ -162,8 +162,16 @@ async function mainDoc(moduleNum) {
 }
 async function subDoc(moduleNum, componentNum) {
   subClicked = true
-  selectedMenu = moduleNum
-  selectedSubMenu = componentNum
-  await build()
-  subClicked = false
+  if(document.getElementById(`subDoc${moduleNum}${componentNum}`)) {
+    setTimeout(() => {
+      subClicked = false
+    }, 100);
+  }
+  else {
+    selectedMenu = moduleNum
+    selectedSubMenu = componentNum
+    await build()
+    subClicked = false
+  }
+  
 }

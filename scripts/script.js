@@ -16,7 +16,7 @@ const globalAnnouncment = ''
 
 const mainAnnouncment = '',
     aboutAnnouncment = '<i class="fa-solid fa-wrench"></i> Not finished',
-    reposAnnouncment = '<i class="fa-solid fa-screwdriver-wrench"></i> Work in progress'
+    reposAnnouncment = '<i class="fa-solid fa-screwdriver-wrench"></i> Work in progress',
     docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Database not ready'
 
 // Check what's name of page and fetch html element
