@@ -108,7 +108,7 @@ async function changeBranch(repoNum, branchNum) {
       const branchInfoHtml = document.getElementById(`branchInfo-${repoNum}`)
       const commitDate = new Date(commitInfo.commit.committer.date).toLocaleString(navigator.language, {hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric"});
       branchInfoHtml.innerHTML = `
-      <img class="av" src="${commitInfo.committer.avatar_url}"><p class="commInfo"><span class="commSha"><i class="fa-solid fa-code-commit"></i> ${commitInfo.sha.substring(0, 7)}</span> | <b>${commitDate}</b> by: <b>${commitInfo.commit.committer.name}</b></p>
+      <img class="av" src="${commitInfo.committer.avatar_url}"><p class="commInfo"><span class="commSha"><i><i class="fa-solid fa-code-commit"></i> ${commitInfo.sha.substring(0, 7)}</span></i> | <b>${commitDate}</b> | <i>by: <b>${commitInfo.commit.committer.name}</b></i></p>
       <br>
         <h1>${commitInfo.commit.message}</h1>
         `
