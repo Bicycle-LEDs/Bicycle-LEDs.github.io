@@ -1,15 +1,15 @@
 // Get document elements
-const loading = document.getElementById("loading")
-const main = document.getElementById("mainSection")
-const grid = document.getElementById("grid")
-const title = document.getElementById("title")
+const loading = document.getElementById('loading')
+const main = document.getElementById('mainSection')
+const grid = document.getElementById('grid')
+const title = document.getElementById('title')
 let repos
 
 async function build() {
   
   // Hide page, show loading
-  loading.style.display = "block"
-  main.style.display = "none"
+  loading.style.display = 'block'
+  main.style.display = 'none'
 
   try {
 
@@ -18,7 +18,7 @@ async function build() {
 
     for(let i = 0; i < repos.length; i++) {
 
-      if(repos[i].name.includes(".github.io")) repos[i].name = "website"
+      if(repos[i].name.includes('.github.io')) repos[i].name = 'website'
       grid.innerHTML = grid.innerHTML + `
       <div class="box">
         <div class="info">
@@ -69,19 +69,19 @@ async function build() {
 
     // Show page again, hide loading
     setTimeout(() => {
-      loading.style.display = "none"
-      main.style.display = "block"
+      loading.style.display = 'none'
+      main.style.display = 'block'
     }, 600);
 
   }
 
   // On error hide loading and clear content 
   catch (error) {
-    title.style.animation = "loadingError 5s infinite"
+    title.style.animation = 'loadingError 5s infinite'
     main.innerHTML = ''
-    loading.style.display = "none"
-    main.style.display = "block"
-    console.error("Error occured: \n" + error)
+    loading.style.display = 'none'
+    main.style.display = 'block'
+    console.error(`Error occured: \n${error}`)
   }
 }
 
@@ -89,9 +89,9 @@ async function changeBranch(repoNum, branchNum) {
   const branchHtml = document.getElementById(`branch-${repoNum}${branchNum}`)
   if(branchHtml.classList.contains('active-branch')) return
   const loadingBranch = document.getElementById(`loadingBranch-${repoNum}`)
-  if(loadingBranch.style.visibility == "visible") return;
+  if(loadingBranch.style.visibility == 'visible') return
   try {
-    loadingBranch.style.visibility = "visible"
+    loadingBranch.style.visibility = 'visible'
 
     // Remove active class from this branch
     const branchesCount = document.getElementById(`branches-${repoNum}`).childElementCount
@@ -117,14 +117,14 @@ async function changeBranch(repoNum, branchNum) {
 
       loadingBranch.style.visibility = "hidden"
 
-      branchHtml.classList.add("active-branch")
-      branchHtml.classList.remove("branch")
+      branchHtml.classList.add('active-branch')
+      branchHtml.classList.remove('branch')
     }, 500);
   }
 
   catch (error) {
-    title.style.animation = "loadingError 5s infinite"
-    console.error("Error occured: \n" + error)
+    title.style.animation = 'loadingError 5s infinite'
+    console.error(`Error occured: \n${error}`)
   }
 }
 
@@ -143,10 +143,10 @@ async function displayMobileSubMenu(repoNum) {
 }
 
 // Change title and button behavior depending on screen width
-if(window.innerWidth < 350) title.innerHTML = "Repos"
+if(window.innerWidth < 350) title.innerHTML = 'Repos'
 window.onresize = () => {
-  if(window.innerWidth < 350) title.innerHTML = "Repos"
-  else title.innerHTML = "Repositories"
+  if(window.innerWidth < 350) title.innerHTML = 'Repos'
+  else title.innerHTML = 'Repositories'
 
   try {
     if(window.innerWidth < 700) {

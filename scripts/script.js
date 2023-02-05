@@ -1,9 +1,9 @@
 // Check version number
 async function versionNum() {
-  var versionNum = document.getElementById("version")
+  var versionNum = document.getElementById('version')
   try {
-    const number = await fetch("../version.txt")
-    if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ' v' + await number.text()
+    const number = await fetch('../version.txt')
+    if(number.ok) versionNum.innerHTML = versionNum.innerHTML + ` v${await number.text()}`
   }
   catch (error) {
     versionNum.innerHTML = versionNum.innerHTML + ' Testing env'
@@ -20,8 +20,8 @@ const mainAnnouncment = '',
     docsAnnouncment = '<i class="fa-solid fa-microchip"></i> Database not ready'
 
 // Check what's name of page and fetch html element
-const fileName = location.href.split("/").slice(-1); 
-const announcment = document.getElementById("announcment")
+const fileName = location.href.split('/').slice(-1); 
+const announcment = document.getElementById('announcment')
 let text;
 
 // Create text depending on filename
@@ -33,12 +33,12 @@ text ? (globalAnnouncment ? text = text + '<br />' + globalAnnouncment : text = 
 announcment.innerHTML =  text
 
 // Navigator, on show show, on hide hide
-const navLinks = document.getElementById("navLinks")
+const navLinks = document.getElementById('navLinks')
 function showMenu() {
-  navLinks.style.right = "0"
+  navLinks.style.right = '0'
 }
 function hideMenu() {
-  navLinks.style.right = "-140px"
+  navLinks.style.right = '-140px'
 }
 
 // On click reload
@@ -48,19 +48,19 @@ function reload() {
 
 // Change anim style
 const anims = [
-  { a: "solid", b: "sync" },
-  { a: "solid", b: "circle-notch" },
-  { a: "solid", b: "spinner" },
-  { a: "solid", b: "gear" },
-  { a: "solid", b: "compact-disc" }
+  { a: 'solid', b: 'sync' },
+  { a: 'solid', b: 'circle-notch' },
+  { a: 'solid', b: 'spinner' },
+  { a: 'solid', b: 'gear' },
+  { a: 'solid', b: 'compact-disc' }
 ]
 let lastAnim, anim
 function changeAnim() {
   while(lastAnim == anim) anim = anims[Math.floor(Math.random()*anims.length)];
-  const loading = document.getElementById("loading")
+  const loading = document.getElementById('loading')
   loading.innerHTML = `<i class="fa-${anim.a} fa-${anim.b}" id="emojiInLoading"></i> Loading`
-  const emojiInLoading = document.getElementById("emojiInLoading")
-  emojiInLoading.style.animation = "spinner 0.5s infinite"
-  loading.style.animation = "loading 2s infinite"
+  const emojiInLoading = document.getElementById('emojiInLoading')
+  emojiInLoading.style.animation = 'spinner 0.5s infinite'
+  loading.style.animation = 'loading 2s infinite'
   lastAnim = anim
 }

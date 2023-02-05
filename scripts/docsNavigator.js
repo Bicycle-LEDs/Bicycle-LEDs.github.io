@@ -1,11 +1,11 @@
 // Get document elements
-const menu = document.getElementById("menu")
-const description = document.getElementById("description")
-const image = document.getElementById("image")
-const loading = document.getElementById("loading")
-const main = document.getElementById("mainSection")
-const title = document.getElementById("title")
-const docsVersion = document.getElementById("docsVersion")
+const menu = document.getElementById('menu')
+const description = document.getElementById('description')
+const image = document.getElementById('image')
+const loading = document.getElementById('loading')
+const main = document.getElementById('mainSection')
+const title = document.getElementById('title')
+const docsVersion = document.getElementById('docsVersion')
 
 // Some temp values
 let docsVersionTemp
@@ -50,7 +50,7 @@ async function build() {
     }
 
     // Clear
-    description.classList.remove("noData")
+    description.classList.remove('noData')
     image.style.display = ''
     description.style.width = ''
     description.style.marginTop = ''
@@ -60,9 +60,9 @@ async function build() {
     // If just loaded page
     if(selectedMenu == -1) {
       image.style.display = 'none'
-      description.classList.add("noData")
+      description.classList.add('noData')
       description.innerHTML = '<h1 id="err" style="text-align: center"><i class="i fa-solid fa-sitemap"></i> Choose a component or module</h1>'
-      document.getElementById("err").style.animation = 'loadingError 5s infinite'
+      document.getElementById('err').style.animation = 'loadingError 5s infinite'
     }
     else {
 
@@ -79,8 +79,8 @@ async function build() {
         description.innerHTML = description.innerHTML + `<h2><i class="fa-solid fa-boxes-stacked"></i> Inside ${modules[selectedMenu].name}</h2>`
   
         // Description
-        if(moduleJson.components[selectedSubMenu].description) description.innerHTML = description.innerHTML + '<h3><i class="i fa-solid fa-circle-info"></i> ' + moduleJson.components[selectedSubMenu].description + '</h3>'
-        else description.innerHTML = description.innerHTML + `<h3 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No description</h3>`
+        if(moduleJson.components[selectedSubMenu].description) description.innerHTML = description.innerHTML + `<h3><i class="i fa-solid fa-circle-info"></i>${moduleJson.components[selectedSubMenu].description}</h3>`
+        else description.innerHTML = description.innerHTML + '<h3 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No description</h3>'
   
         // Buy links
         /*
@@ -91,9 +91,9 @@ async function build() {
 
         // Image
         for (let i = 0; i < moduleJson.components[selectedSubMenu].pictures.length; i++) {
-          const checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i], { method: 'HEAD' })
-          if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/components/" + moduleJson.components[selectedSubMenu].pictures[i] + '">'
-          else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
+          const checkImage = await fetch(`https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[selectedMenu].path}/components/${moduleJson.components[selectedSubMenu].pictures[i]}`, { method: 'HEAD' })
+          if(checkImage.ok) image.innerHTML = image.innerHTML + `<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[selectedMenu].path}/components/${moduleJson.components[selectedSubMenu].pictures[i]}">`
+          else image.innerHTML = image.innerHTML + '<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>'
         }
       }
     
@@ -101,11 +101,11 @@ async function build() {
       else {
       
         // Name
-        description.innerHTML = '<h1><i class="i fa-solid fa-box-archive"></i> ' + moduleJson.name + '</h1>'
+        description.innerHTML = `<h1><i class="i fa-solid fa-box-archive"></i> ${moduleJson.name}</h1>`
   
         // Subtitle
-        if(moduleJson.subtitle) description.innerHTML = description.innerHTML + '<h2><i class="fa-solid fa-circle-info"></i> ' + moduleJson.subtitle + '</h2>'
-        else description.innerHTML = description.innerHTML + `<h2 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No subtitle</h2>`
+        if(moduleJson.subtitle) description.innerHTML = description.innerHTML + `<h2><i class="fa-solid fa-circle-info"></i> ${moduleJson.subtitle}</h2>`
+        else description.innerHTML = description.innerHTML + '<h2 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No subtitle</h2>'
   
         // Description
         /*
@@ -116,36 +116,36 @@ async function build() {
   
         // Image
         for (let i = 0; i < moduleJson.pictures.length; i++) {
-          const checkImage = await fetch('https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i], { method: 'HEAD' })
-          if(checkImage.ok) image.innerHTML = image.innerHTML + '<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/' + modules[selectedMenu].path + "/" + moduleJson.pictures[i] + '">'
-          else image.innerHTML = image.innerHTML + `<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>`
+          const checkImage = await fetch(`https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[selectedMenu].path}/${moduleJson.pictures[i]}`, { method: 'HEAD' })
+          if(checkImage.ok) image.innerHTML = image.innerHTML + `<img src="https://raw.githubusercontent.com/Bicycle-LEDs/electronics/main/${modules[selectedMenu].path}/${moduleJson.pictures[i]}">`
+          else image.innerHTML = image.innerHTML + '<h1 class="info"><i class="fa-solid fa-triangle-exclamation"></i> No image</h1>'
         }
       }
     }
     
     // Show docs again, hide loading
     setTimeout(() => {
-      loading.style.display = "none"
-      main.style.display = "block"
+      loading.style.display = 'none'
+      main.style.display = 'block'
       docsVersion.innerHTML = docsVersionTemp
     }, 600);
   }
 
   // On error hide loading and clear content 
   catch(error) {
-    title.style.animation = "loadingError 5s infinite"
+    title.style.animation = 'loadingError 5s infinite'
     main.innerHTML = ''
-    loading.style.display = "none"
-    main.style.display = "block"
-    console.error("Error occured: \n" + error)
+    loading.style.display = 'none'
+    main.style.display = 'block'
+    console.error(`Error occured: \n${error}`)
   }
 }
 
 // Change title depending on screen width
-if(window.innerWidth < 350) title.innerHTML = "Docs"
+if(window.innerWidth < 350) title.innerHTML = 'Docs'
 window.onresize = () => {
-  if(window.innerWidth < 350) title.innerHTML = "Docs"
-  else title.innerHTML = "Documentation"
+  if(window.innerWidth < 350) title.innerHTML = 'Docs'
+  else title.innerHTML = 'Documentation'
 }
 
 // Load animation, from there to provide synchronous movement
