@@ -86,6 +86,8 @@ async function build() {
 }
 
 async function changeBranch(repoNum, branchNum) {
+  const branchHtml = document.getElementById(`branch-${repoNum}${branchNum}`)
+  if(branchHtml.classList.contains('active-branch')) return
   const loadingBranch = document.getElementById(`loadingBranch-${repoNum}`)
   if(loadingBranch.style.visibility == "visible") return;
   try {
@@ -115,10 +117,8 @@ async function changeBranch(repoNum, branchNum) {
 
       loadingBranch.style.visibility = "hidden"
 
-      const branchHtml = document.getElementById(`branch-${repoNum}${branchNum}`)
       branchHtml.classList.add("active-branch")
       branchHtml.classList.remove("branch")
-
     }, 500);
   }
 

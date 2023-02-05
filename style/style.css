@@ -516,11 +516,11 @@ iframe[seamless] {
   margin-left: 10px;
   font-size: 20px;
   width: 157px;
-  cursor: pointer;
 }
 
 .repos .branch-ctrl .branch {
-  color: white
+  color: white;
+  cursor: pointer;
 }
 .repos .branch-ctrl .active-branch {
   color: yellow;
