@@ -608,7 +608,6 @@ iframe[seamless] {
     display: none;
   }
   .repos .repoBtn {
-    position: absolute;
     rotate: 90deg;
     transform: none;
     padding: 0;
