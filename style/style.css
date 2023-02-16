@@ -608,11 +608,10 @@ iframe[seamless] {
     display: none;
   }
   .repos .repoBtn {
-    rotate: 90deg;
     transform: none;
     padding: 0;
-    right: 15px;
-    top: calc(100% - 42px);
+    right: 7px;
+    top: calc(100% - 45px);
   }
   .repos .repoBtn:hover {
     font-size: 30px;

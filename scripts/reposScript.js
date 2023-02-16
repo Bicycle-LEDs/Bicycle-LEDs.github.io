@@ -63,9 +63,8 @@ async function build() {
 
       // Set button as link or as function
       const button = document.getElementById(`mainBtn-${i}`)
-      if(window.innerWidth > 700) button.setAttribute('href', repos[i].html_url)
-      else button.setAttribute('onclick', `displayMobileSubMenu(${i})`)
-    }
+      button.setAttribute('href', repos[i].html_url)
+    } 
 
     // Show page again, hide loading
     setTimeout(() => {
@@ -128,45 +127,11 @@ async function changeBranch(repoNum, branchNum) {
   }
 }
 
-async function displayMobileSubMenu(repoNum) {
-  const button = document.getElementById(`mainBtn-${repoNum}`)
-
-  // Rotate button
-  if(button.style.rotate == '-90deg') button.style.rotate = ''
-  else button.style.rotate = '-90deg'
-
-  /*
-  ------------
-  --- TODO ---
-  ------------
-  */
-
-  title.style.animation = 'loadingError 5s infinite'
-}
-
 // Change title and button behavior depending on screen width
 if(window.innerWidth < 350) title.innerHTML = 'Repos'
 window.onresize = () => {
   if(window.innerWidth < 350) title.innerHTML = 'Repos'
   else title.innerHTML = 'Repositories'
-
-  try {
-    if(window.innerWidth < 700) {
-      for (let i = 0; i < repos.length; i++) {
-        const button = document.getElementById(`mainBtn-${i}`)
-        button.removeAttribute('href')
-        button.setAttribute('onclick', `displayMobileSubMenu(${i})`)
-      }
-    }
-    else {
-      for (let i = 0; i < repos.length; i++) {
-        const button = document.getElementById(`mainBtn-${i}`)
-        button.setAttribute('href', repos[i].html_url)
-        button.removeAttribute('onclick')
-      }
-    }
-  }
-  catch (error) {}
 }
 
 // Load animation, from there to provide synchronous movement
